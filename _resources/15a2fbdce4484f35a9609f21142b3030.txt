@@ -1,0 +1,2872 @@
+------
+Class: background
+Score: 0.861779
+------
+Class: tench, Tinca tinca
+Score: 0.538612
+------
+Class: goldfish, Carassius auratus
+Score: 0.430889
+------
+Class: great white shark, white shark, man-eater, man-eating shark, Carcharodon carcharias
+Score: 0.323167
+------
+Class: tiger shark, Galeocerdo cuvieri
+Score: -4.73978
+------
+Class: hammerhead, hammerhead shark
+Score: 3.98573
+------
+Class: electric ray, crampfish, numbfish, torpedo
+Score: 0.323167
+------
+Class: stingray
+Score: 1.07722
+------
+Class: cock
+Score: 1.07722
+------
+Class: hen
+Score: 0.323167
+------
+Class: ostrich, Struthio camelus
+Score: -5.06295
+------
+Class: brambling, Fringilla montifringilla
+Score: 3.98573
+------
+Class: goldfinch, Carduelis carduelis
+Score: 0.107722
+------
+Class: house finch, linnet, Carpodacus mexicanus
+Score: 1.40039
+------
+Class: junco, snowbird
+Score: 2.04672
+------
+Class: indigo bunting, indigo finch, indigo bird, Passerina cyanea
+Score: 0.323167
+------
+Class: robin, American robin, Turdus migratorius
+Score: -5.49384
+------
+Class: bulbul
+Score: 3.98573
+------
+Class: jay
+Score: 0.107722
+------
+Class: magpie
+Score: 1.29267
+------
+Class: chickadee
+Score: 2.69306
+------
+Class: water ouzel, dipper
+Score: 0.215445
+------
+Class: kite
+Score: -6.46334
+------
+Class: bald eagle, American eagle, Haliaeetus leucocephalus
+Score: 3.98573
+------
+Class: great grey owl, great gray owl, Strix nebulosa
+Score: 1.29267
+------
+Class: European fire salamander, Salamandra salamandra
+Score: 3.01623
+------
+Class: common newt, Triturus vulgaris
+Score: 0.215445
+------
+Class: eft
+Score: -7.54057
+------
+Class: spotted salamander, Ambystoma maculatum
+Score: 3.98573
+------
+Class: axolotl, mud puppy, Ambystoma mexicanum
+Score: 0.107722
+------
+Class: bullfrog, Rana catesbeiana
+Score: 1.18495
+------
+Class: tree frog, tree-frog
+Score: 2.69306
+------
+Class: tailed frog, bell toad, ribbed toad, tailed toad, Ascaphus trui
+Score: 0.215445
+------
+Class: loggerhead, loggerhead turtle, Caretta caretta
+Score: -7.2174
+------
+Class: leatherback turtle, leatherback, leathery turtle, Dermochelys coriacea
+Score: 3.98573
+------
+Class: mud turtle
+Score: 0.215445
+------
+Class: terrapin
+Score: 1.18495
+------
+Class: box turtle, box tortoise
+Score: 2.36989
+------
+Class: banded gecko
+Score: 0.323167
+------
+Class: common iguana, iguana, Iguana iguana
+Score: -5.92473
+------
+Class: American chameleon, anole, Anolis carolinensis
+Score: 3.98573
+------
+Class: whiptail, whiptail lizard
+Score: 0.323167
+------
+Class: agama
+Score: 1.40039
+------
+Class: frilled lizard, Chlamydosaurus kingi
+Score: 2.69306
+------
+Class: alligator lizard
+Score: 0.323167
+------
+Class: Gila monster, Heloderma suspectum
+Score: -6.35562
+------
+Class: green lizard, Lacerta viridis
+Score: 3.98573
+------
+Class: African chameleon, Chamaeleo chamaeleon
+Score: 0.215445
+------
+Class: Komodo dragon, Komodo lizard, dragon lizard, giant lizard, Varanus komodoensis
+Score: 1.29267
+------
+Class: African crocodile, Nile crocodile, Crocodylus niloticus
+Score: 2.80078
+------
+Class: American alligator, Alligator mississipiensis
+Score: 0.215445
+------
+Class: triceratops
+Score: -7.00195
+------
+Class: thunder snake, worm snake, Carphophis amoenus
+Score: 3.98573
+------
+Class: hognose snake, puff adder, sand viper
+Score: 1.18495
+------
+Class: green snake, grass snake
+Score: 2.69306
+------
+Class: king snake, kingsnake
+Score: 0.215445
+------
+Class: garter snake, grass snake
+Score: -6.89423
+------
+Class: water snake
+Score: 3.98573
+------
+Class: night snake, Hypsiglena torquata
+Score: 1.18495
+------
+Class: boa constrictor, Constrictor constrictor
+Score: 2.80078
+------
+Class: rock python, rock snake, Python sebae
+Score: 0.215445
+------
+Class: Indian cobra, Naja naja
+Score: -6.67879
+------
+Class: green mamba
+Score: 3.98573
+------
+Class: horned viper, cerastes, sand viper, horned asp, Cerastes cornutus
+Score: 0.969501
+------
+Class: diamondback, diamondback rattlesnake, Crotalus adamanteus
+Score: 2.58534
+------
+Class: sidewinder, horned rattlesnake, Crotalus cerastes
+Score: 0.107722
+------
+Class: trilobite
+Score: -6.89423
+------
+Class: harvestman, daddy longlegs, Phalangium opilio
+Score: 3.98573
+------
+Class: scorpion
+Score: 0.430889
+------
+Class: black and gold garden spider, Argiope aurantia
+Score: 0.754057
+------
+Class: barn spider, Araneus cavaticus
+Score: 2.15445
+------
+Class: garden spider, Aranea diademata
+Score: 0.107722
+------
+Class: black widow, Latrodectus mactans
+Score: -6.2479
+------
+Class: tarantula
+Score: 3.98573
+------
+Class: wolf spider, hunting spider
+Score: 0.323167
+------
+Class: tick
+Score: 1.18495
+------
+Class: centipede
+Score: 2.04672
+------
+Class: black grouse
+Score: 0.323167
+------
+Class: ptarmigan
+Score: -5.60156
+------
+Class: ruffed grouse, partridge, Bonasa umbellus
+Score: 3.98573
+------
+Class: prairie chicken, prairie grouse, prairie fowl
+Score: 0.107722
+------
+Class: peacock
+Score: 0.969501
+------
+Class: quail
+Score: 2.58534
+------
+Class: partridge
+Score: 0.107722
+------
+Class: African grey, African gray, Psittacus erithacus
+Score: -6.14017
+------
+Class: macaw
+Score: 3.98573
+------
+Class: lorikeet
+Score: 0.861779
+------
+Class: coucal
+Score: 2.47761
+------
+Class: bee eater
+Score: 0.107722
+------
+Class: hornbill
+Score: -6.2479
+------
+Class: hummingbird
+Score: 3.98573
+------
+Class: toucan
+Score: 1.18495
+------
+Class: drake
+Score: 2.15445
+------
+Class: red-breasted merganser, Mergus serrator
+Score: 0.215445
+------
+Class: goose
+Score: -5.49384
+------
+Class: black swan, Cygnus atratus
+Score: 3.98573
+------
+Class: tusker
+Score: 0.215445
+------
+Class: echidna, spiny anteater, anteater
+Score: 0.969501
+------
+Class: platypus, duckbill, duckbilled platypus, duck-billed platypus, Ornithorhynchus anatinus
+Score: 2.04672
+------
+Class: wallaby, brush kangaroo
+Score: 0.107722
+------
+Class: koala, koala bear, kangaroo bear, native bear, Phascolarctos cinereus
+Score: -5.70928
+------
+Class: wombat
+Score: 3.98573
+------
+Class: jellyfish
+Score: 0.430889
+------
+Class: sea anemone, anemone
+Score: 0.754057
+------
+Class: brain coral
+Score: 2.47761
+------
+Class: nematode, nematode worm, roundworm
+Score: -7.32512
+------
+Class: conch
+Score: 3.98573
+------
+Class: snail
+Score: 0.215445
+------
+Class: slug
+Score: 0.646334
+------
+Class: sea slug, nudibranch
+Score: 2.9085
+------
+Class: chambered nautilus, pearly nautilus, nautilus
+Score: -7.86373
+------
+Class: Dungeness crab, Cancer magister
+Score: 3.98573
+------
+Class: rock crab, Cancer irroratus
+Score: 0.215445
+------
+Class: fiddler crab
+Score: 0.646334
+------
+Class: king crab, Alaska crab, Alaskan king crab, Alaska king crab, Paralithodes camtschatica
+Score: 2.69306
+------
+Class: spiny lobster, langouste, rock lobster, crawfish, crayfish, sea crawfish
+Score: -7.43284
+------
+Class: crayfish, crawfish, crawdad, crawdaddy
+Score: 3.98573
+------
+Class: hermit crab
+Score: 0.323167
+------
+Class: isopod
+Score: 0.538612
+------
+Class: white stork, Ciconia ciconia
+Score: 2.69306
+------
+Class: spoonbill
+Score: -7.54057
+------
+Class: flamingo
+Score: 3.98573
+------
+Class: little blue heron, Egretta caerulea
+Score: 0.323167
+------
+Class: American egret, great white heron, Egretta albus
+Score: 0.754057
+------
+Class: bittern
+Score: 2.9085
+------
+Class: limpkin, Aramus pictus
+Score: -7.97145
+------
+Class: European gallinule, Porphyrio porphyrio
+Score: 3.98573
+------
+Class: American coot, marsh hen, mud hen, water hen, Fulica americana
+Score: 0.215445
+------
+Class: bustard
+Score: 0.969501
+------
+Class: ruddy turnstone, Arenaria interpres
+Score: 3.01623
+------
+Class: red-backed sandpiper, dunlin, Erolia alpina
+Score: 0.107722
+------
+Class: redshank, Tringa totanus
+Score: -7.43284
+------
+Class: dowitcher
+Score: 3.98573
+------
+Class: pelican
+Score: 0.754057
+------
+Class: king penguin, Aptenodytes patagonica
+Score: 2.80078
+------
+Class: grey whale, gray whale, devilfish, Eschrichtius gibbosus, Eschrichtius robustus
+Score: -7.00195
+------
+Class: killer whale, killer, orca, grampus, sea wolf, Orcinus orca
+Score: 3.98573
+------
+Class: dugong, Dugong dugon
+Score: 0.215445
+------
+Class: sea lion
+Score: 0.754057
+------
+Class: Chihuahua
+Score: 2.69306
+------
+Class: Japanese spaniel
+Score: 0.107722
+------
+Class: Maltese dog, Maltese terrier, Maltese
+Score: -7.75601
+------
+Class: Pekinese, Pekingese, Peke
+Score: 3.98573
+------
+Class: Shih-Tzu
+Score: 0.430889
+------
+Class: Blenheim spaniel
+Score: 1.07722
+------
+Class: papillon
+Score: 2.58534
+------
+Class: toy terrier
+Score: 0.215445
+------
+Class: Rhodesian ridgeback
+Score: -6.67879
+------
+Class: Afghan hound, Afghan
+Score: 3.98573
+------
+Class: basset, basset hound
+Score: 0.323167
+------
+Class: beagle
+Score: 1.40039
+------
+Class: bloodhound, sleuthhound
+Score: 2.69306
+------
+Class: bluetick
+Score: 0.323167
+------
+Class: black-and-tan coonhound
+Score: -6.2479
+------
+Class: Walker hound, Walker foxhound
+Score: 3.98573
+------
+Class: redbone
+Score: 1.18495
+------
+Class: borzoi, Russian wolfhound
+Score: 2.9085
+------
+Class: Irish wolfhound
+Score: 0.215445
+------
+Class: Italian greyhound
+Score: -7.2174
+------
+Class: whippet
+Score: 3.98573
+------
+Class: Ibizan hound, Ibizan Podenco
+Score: 0.215445
+------
+Class: Norwegian elkhound, elkhound
+Score: 1.07722
+------
+Class: otterhound, otter hound
+Score: 2.80078
+------
+Class: Saluki, gazelle hound
+Score: 0.215445
+------
+Class: Scottish deerhound, deerhound
+Score: -7.10968
+------
+Class: Weimaraner
+Score: 3.98573
+------
+Class: Staffordshire bullterrier, Staffordshire bull terrier
+Score: 0.107722
+------
+Class: American Staffordshire terrier, Staffordshire terrier, American pit bull terrier, pit bull terrier
+Score: 1.29267
+------
+Class: Bedlington terrier
+Score: 2.58534
+------
+Class: Border terrier
+Score: 0.215445
+------
+Class: Kerry blue terrier
+Score: -6.57106
+------
+Class: Irish terrier
+Score: 3.98573
+------
+Class: Norwich terrier
+Score: 1.18495
+------
+Class: Yorkshire terrier
+Score: 2.58534
+------
+Class: wire-haired fox terrier
+Score: 0.215445
+------
+Class: Lakeland terrier
+Score: -6.78651
+------
+Class: Sealyham terrier, Sealyham
+Score: 3.98573
+------
+Class: Airedale, Airedale terrier
+Score: 0.215445
+------
+Class: cairn, cairn terrier
+Score: 1.18495
+------
+Class: Australian terrier
+Score: 2.58534
+------
+Class: Dandie Dinmont, Dandie Dinmont terrier
+Score: 0.215445
+------
+Class: Boston bull, Boston terrier
+Score: -7.00195
+------
+Class: miniature schnauzer
+Score: 3.98573
+------
+Class: giant schnauzer
+Score: 0.215445
+------
+Class: standard schnauzer
+Score: 1.29267
+------
+Class: Scotch terrier, Scottish terrier, Scottie
+Score: 2.69306
+------
+Class: Tibetan terrier, chrysanthemum dog
+Score: 0.215445
+------
+Class: silky terrier, Sydney silky
+Score: -6.89423
+------
+Class: soft-coated wheaten terrier
+Score: 3.98573
+------
+Class: West Highland white terrier
+Score: 0.215445
+------
+Class: Lhasa, Lhasa apso
+Score: 1.07722
+------
+Class: flat-coated retriever
+Score: 2.69306
+------
+Class: curly-coated retriever
+Score: 0.107722
+------
+Class: golden retriever
+Score: -7.2174
+------
+Class: Labrador retriever
+Score: 3.98573
+------
+Class: Chesapeake Bay retriever
+Score: 0.323167
+------
+Class: German short-haired pointer
+Score: 1.07722
+------
+Class: vizsla, Hungarian pointer
+Score: 2.69306
+------
+Class: English setter
+Score: 0.107722
+------
+Class: Irish setter, red setter
+Score: -7.2174
+------
+Class: Gordon setter
+Score: 3.98573
+------
+Class: Brittany spaniel
+Score: 0.323167
+------
+Class: clumber, clumber spaniel
+Score: 1.07722
+------
+Class: English springer, English springer spaniel
+Score: 2.9085
+------
+Class: Welsh springer spaniel
+Score: 0.107722
+------
+Class: cocker spaniel, English cocker spaniel, cocker
+Score: -7.64829
+------
+Class: Sussex spaniel
+Score: 3.98573
+------
+Class: Irish water spaniel
+Score: 0.107722
+------
+Class: kuvasz
+Score: 1.07722
+------
+Class: schipperke
+Score: 2.80078
+------
+Class: groenendael
+Score: 0.215445
+------
+Class: malinois
+Score: -7.10968
+------
+Class: briard
+Score: 3.98573
+------
+Class: kelpie
+Score: 0.107722
+------
+Class: komondor
+Score: 0.754057
+------
+Class: Old English sheepdog, bobtail
+Score: 2.69306
+------
+Class: collie
+Score: -7.10968
+------
+Class: Border collie
+Score: 3.98573
+------
+Class: Bouvier des Flandres, Bouviers des Flandres
+Score: 0.430889
+------
+Class: Rottweiler
+Score: 0.754057
+------
+Class: German shepherd, German shepherd dog, German police dog, alsatian
+Score: 2.69306
+------
+Class: miniature pinscher
+Score: -7.2174
+------
+Class: Greater Swiss Mountain dog
+Score: 3.98573
+------
+Class: Bernese mountain dog
+Score: 0.323167
+------
+Class: Appenzeller
+Score: 0.969501
+------
+Class: EntleBucher
+Score: 2.80078
+------
+Class: boxer
+Score: 0.215445
+------
+Class: bull mastiff
+Score: -6.89423
+------
+Class: Tibetan mastiff
+Score: 3.98573
+------
+Class: French bulldog
+Score: 0.538612
+------
+Class: Great Dane
+Score: 0.754057
+------
+Class: Saint Bernard, St Bernard
+Score: 3.12395
+------
+Class: Eskimo dog, husky
+Score: 0.107722
+------
+Class: malamute, malemute, Alaskan malamute
+Score: -7.43284
+------
+Class: Siberian husky
+Score: 3.98573
+------
+Class: dalmatian, coach dog, carriage dog
+Score: 0.323167
+------
+Class: affenpinscher, monkey pinscher, monkey dog
+Score: 0.754057
+------
+Class: basenji
+Score: 3.12395
+------
+Class: pug, pug-dog
+Score: -0.107722
+------
+Class: Leonberg
+Score: -7.75601
+------
+Class: Newfoundland, Newfoundland dog
+Score: 3.98573
+------
+Class: Samoyed, Samoyede
+Score: 0.754057
+------
+Class: Pomeranian
+Score: 3.33939
+------
+Class: chow, chow chow
+Score: -0.107722
+------
+Class: keeshond
+Score: -8.40234
+------
+Class: Brabancon griffon
+Score: 3.98573
+------
+Class: Pembroke, Pembroke Welsh corgi
+Score: -0.323167
+------
+Class: Cardigan, Cardigan Welsh corgi
+Score: 0.861779
+------
+Class: toy poodle
+Score: 3.23167
+------
+Class: miniature poodle
+Score: -0.107722
+------
+Class: standard poodle
+Score: -7.32512
+------
+Class: Mexican hairless
+Score: 3.98573
+------
+Class: white wolf, Arctic wolf, Canis lupus tundrarum
+Score: 0.538612
+------
+Class: red wolf, maned wolf, Canis rufus, Canis niger
+Score: 3.23167
+------
+Class: coyote, prairie wolf, brush wolf, Canis latrans
+Score: -0.215445
+------
+Class: dingo, warrigal, warragal, Canis dingo
+Score: -7.97145
+------
+Class: dhole, Cuon alpinus
+Score: 3.98573
+------
+Class: African hunting dog, hyena dog, Cape hunting dog, Lycaon pictus
+Score: 0.215445
+------
+Class: hyena, hyaena
+Score: 0.754057
+------
+Class: red fox, Vulpes vulpes
+Score: 3.23167
+------
+Class: Arctic fox, white fox, Alopex lagopus
+Score: -8.07918
+------
+Class: grey fox, gray fox, Urocyon cinereoargenteus
+Score: 3.98573
+------
+Class: tabby, tabby cat
+Score: -0.107722
+------
+Class: tiger cat
+Score: 1.07722
+------
+Class: Persian cat
+Score: 3.12395
+------
+Class: Siamese cat, Siamese
+Score: 0.107722
+------
+Class: Egyptian cat
+Score: -7.10968
+------
+Class: cougar, puma, catamount, mountain lion, painter, panther, Felis concolor
+Score: 3.98573
+------
+Class: lynx, catamount
+Score: -0.430889
+------
+Class: leopard, Panthera pardus
+Score: 0.754057
+------
+Class: snow leopard, ounce, Panthera uncia
+Score: 2.9085
+------
+Class: lion, king of beasts, Panthera leo
+Score: -7.2174
+------
+Class: tiger, Panthera tigris
+Score: 3.98573
+------
+Class: cheetah, chetah, Acinonyx jubatus
+Score: 0.107722
+------
+Class: brown bear, bruin, Ursus arctos
+Score: 0.646334
+------
+Class: American black bear, black bear, Ursus americanus, Euarctos americanus
+Score: 2.80078
+------
+Class: ice bear, polar bear, Ursus Maritimus, Thalarctos maritimus
+Score: -0.107722
+------
+Class: sloth bear, Melursus ursinus, Ursus ursinus
+Score: -7.64829
+------
+Class: mongoose
+Score: 3.98573
+------
+Class: meerkat, mierkat
+Score: 0.646334
+------
+Class: tiger beetle
+Score: 0.538612
+------
+Class: ladybug, ladybeetle, lady beetle, ladybird, ladybird beetle
+Score: 2.9085
+------
+Class: ground beetle, carabid beetle
+Score: -0.107722
+------
+Class: long-horned beetle, longicorn, longicorn beetle
+Score: -7.64829
+------
+Class: leaf beetle, chrysomelid
+Score: 3.98573
+------
+Class: dung beetle
+Score: 0.430889
+------
+Class: rhinoceros beetle
+Score: 0.754057
+------
+Class: weevil
+Score: 3.12395
+------
+Class: bee
+Score: -7.64829
+------
+Class: ant, emmet, pismire
+Score: 3.98573
+------
+Class: grasshopper, hopper
+Score: 0.215445
+------
+Class: cricket
+Score: 0.861779
+------
+Class: walking stick, walkingstick, stick insect
+Score: 3.33939
+------
+Class: mantis, mantid
+Score: -7.97145
+------
+Class: cicada, cicala
+Score: 3.98573
+------
+Class: lacewing, lacewing fly
+Score: 1.07722
+------
+Class: dragonfly, darning needle, devil's darning needle, sewing needle, snake feeder, snake doctor, mosquito hawk, skeeter hawk
+Score: 3.44712
+------
+Class: admiral
+Score: -7.86373
+------
+Class: ringlet, ringlet butterfly
+Score: 3.98573
+------
+Class: monarch, monarch butterfly, milkweed butterfly, Danaus plexippus
+Score: -0.430889
+------
+Class: cabbage butterfly
+Score: 1.07722
+------
+Class: sulphur butterfly, sulfur butterfly
+Score: 3.23167
+------
+Class: lycaenid, lycaenid butterfly
+Score: 0.107722
+------
+Class: starfish, sea star
+Score: -7.64829
+------
+Class: sea urchin
+Score: 3.98573
+------
+Class: sea cucumber, holothurian
+Score: -0.323167
+------
+Class: wood rabbit, cottontail, cottontail rabbit
+Score: 0.861779
+------
+Class: hare
+Score: 3.01623
+------
+Class: Angora, Angora rabbit
+Score: -0.107722
+------
+Class: hamster
+Score: -7.86373
+------
+Class: porcupine, hedgehog
+Score: 3.98573
+------
+Class: fox squirrel, eastern fox squirrel, Sciurus niger
+Score: -0.215445
+------
+Class: marmot
+Score: 0.646334
+------
+Class: beaver
+Score: 2.69306
+------
+Class: guinea pig, Cavia cobaya
+Score: -0.107722
+------
+Class: sorrel
+Score: -7.00195
+------
+Class: zebra
+Score: 3.98573
+------
+Class: hog, pig, grunter, squealer, Sus scrofa
+Score: -0.107722
+------
+Class: wild boar, boar, Sus scrofa
+Score: 1.29267
+------
+Class: warthog
+Score: 2.26217
+------
+Class: hippopotamus, hippo, river horse, Hippopotamus amphibius
+Score: 0.107722
+------
+Class: ox
+Score: -5.92473
+------
+Class: water buffalo, water ox, Asiatic buffalo, Bubalus bubalis
+Score: 3.98573
+------
+Class: bison
+Score: -0.107722
+------
+Class: ram, tup
+Score: 1.18495
+------
+Class: bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn, Rocky Mountain sheep, Ovis canadensis
+Score: 1.61584
+------
+Class: ibex, Capra ibex
+Score: 0.215445
+------
+Class: hartebeest
+Score: -3.878
+------
+Class: impala, Aepyceros melampus
+Score: 3.98573
+------
+Class: gazelle
+Score: -0.646334
+------
+Class: Arabian camel, dromedary, Camelus dromedarius
+Score: 1.61584
+------
+Class: llama
+Score: 0.754057
+------
+Class: weasel
+Score: 0.323167
+------
+Class: mink
+Score: -4.63206
+------
+Class: polecat, fitch, foulmart, foumart, Mustela putorius
+Score: 3.98573
+------
+Class: black-footed ferret, ferret, Mustela nigripes
+Score: 1.50811
+------
+Class: skunk, polecat, wood pussy
+Score: 0.538612
+------
+Class: badger
+Score: 0.754057
+------
+Class: armadillo
+Score: -3.878
+------
+Class: three-toed sloth, ai, Bradypus tridactylus
+Score: 3.98573
+------
+Class: orangutan, orang, orangutang, Pongo pygmaeus
+Score: 1.29267
+------
+Class: gorilla, Gorilla gorilla
+Score: 0.538612
+------
+Class: chimpanzee, chimp, Pan troglodytes
+Score: 1.40039
+------
+Class: gibbon, Hylobates lar
+Score: 0.861779
+------
+Class: siamang, Hylobates syndactylus, Symphalangus syndactylus
+Score: -3.98573
+------
+Class: guenon, guenon monkey
+Score: 3.98573
+------
+Class: patas, hussar monkey, Erythrocebus patas
+Score: 0.754057
+------
+Class: baboon
+Score: 1.07722
+------
+Class: macaque
+Score: 2.26217
+------
+Class: langur
+Score: 0.969501
+------
+Class: colobus, colobus monkey
+Score: -3.23167
+------
+Class: proboscis monkey, Nasalis larvatus
+Score: 3.98573
+------
+Class: marmoset
+Score: 0.323167
+------
+Class: capuchin, ringtail, Cebus capucinus
+Score: 0.969501
+------
+Class: howler monkey, howler
+Score: 3.12395
+------
+Class: titi, titi monkey
+Score: 0.861779
+------
+Class: spider monkey, Ateles geoffroyi
+Score: -5.81701
+------
+Class: squirrel monkey, Saimiri sciureus
+Score: 3.98573
+------
+Class: Madagascar cat, ring-tailed lemur, Lemur catta
+Score: 0.215445
+------
+Class: indri, indris, Indri indri, Indri brevicaudatus
+Score: 0.861779
+------
+Class: Indian elephant, Elephas maximus
+Score: 3.44712
+------
+Class: African elephant, Loxodonta africana
+Score: 0.861779
+------
+Class: lesser panda, red panda, panda, bear cat, cat bear, Ailurus fulgens
+Score: -7.00195
+------
+Class: giant panda, panda, panda bear, coon bear, Ailuropoda melanoleuca
+Score: 3.98573
+------
+Class: barracouta, snoek
+Score: 0.323167
+------
+Class: eel
+Score: 0.646334
+------
+Class: coho, cohoe, coho salmon, blue jack, silver salmon, Oncorhynchus kisutch
+Score: 3.01623
+------
+Class: rock beauty, Holocanthus tricolor
+Score: 0.861779
+------
+Class: anemone fish
+Score: -6.35562
+------
+Class: sturgeon
+Score: 3.98573
+------
+Class: gar, garfish, garpike, billfish, Lepisosteus osseus
+Score: 0.646334
+------
+Class: lionfish
+Score: 0.538612
+------
+Class: puffer, pufferfish, blowfish, globefish
+Score: 2.80078
+------
+Class: abacus
+Score: 0.861779
+------
+Class: abaya
+Score: -5.60156
+------
+Class: academic gown, academic robe, judge's robe
+Score: 3.98573
+------
+Class: accordion, piano accordion, squeeze box
+Score: 0.430889
+------
+Class: acoustic guitar
+Score: 0.538612
+------
+Class: aircraft carrier, carrier, flattop, attack aircraft carrier
+Score: 2.9085
+------
+Class: airliner
+Score: 0.861779
+------
+Class: airship, dirigible
+Score: -5.81701
+------
+Class: altar
+Score: 3.98573
+------
+Class: ambulance
+Score: 0.538612
+------
+Class: amphibian, amphibious vehicle
+Score: 0.323167
+------
+Class: analog clock
+Score: 3.23167
+------
+Class: apiary, bee house
+Score: 0.754057
+------
+Class: apron
+Score: -6.78651
+------
+Class: ashcan, trash can, garbage can, wastebin, ash bin, ash-bin, ashbin, dustbin, trash barrel, trash bin
+Score: 3.98573
+------
+Class: assault rifle, assault gun
+Score: 0.646334
+------
+Class: backpack, back pack, knapsack, packsack, rucksack, haversack
+Score: 0.430889
+------
+Class: bakery, bakeshop, bakehouse
+Score: 3.12395
+------
+Class: balance beam, beam
+Score: 0.861779
+------
+Class: balloon
+Score: -6.67879
+------
+Class: ballpoint, ballpoint pen, ballpen, Biro
+Score: 3.98573
+------
+Class: Band Aid
+Score: 0.215445
+------
+Class: banjo
+Score: 0.646334
+------
+Class: bannister, banister, balustrade, balusters, handrail
+Score: 3.01623
+------
+Class: barbell
+Score: 0.861779
+------
+Class: barber chair
+Score: -6.2479
+------
+Class: barbershop
+Score: 3.98573
+------
+Class: barn
+Score: -0.107722
+------
+Class: barometer
+Score: 0.430889
+------
+Class: barrel, cask
+Score: 2.9085
+------
+Class: barrow, garden cart, lawn cart, wheelbarrow
+Score: 0.861779
+------
+Class: baseball
+Score: -6.03245
+------
+Class: basketball
+Score: 3.98573
+------
+Class: bassinet
+Score: 0.861779
+------
+Class: bassoon
+Score: 0.646334
+------
+Class: bathing cap, swimming cap
+Score: 2.47761
+------
+Class: bath towel
+Score: 0.969501
+------
+Class: bathtub, bathing tub, bath, tub
+Score: -5.81701
+------
+Class: beach wagon, station wagon, wagon, estate car, beach waggon, station waggon, waggon
+Score: 3.98573
+------
+Class: beacon, lighthouse, beacon light, pharos
+Score: 0.754057
+------
+Class: beaker
+Score: 0.538612
+------
+Class: bearskin, busby, shako
+Score: 2.36989
+------
+Class: beer bottle
+Score: 0.861779
+------
+Class: beer glass
+Score: -5.49384
+------
+Class: bell cote, bell cot
+Score: 3.98573
+------
+Class: bib
+Score: 0.430889
+------
+Class: bicycle-built-for-two, tandem bicycle, tandem
+Score: 0.430889
+------
+Class: bikini, two-piece
+Score: 3.01623
+------
+Class: binder, ring-binder
+Score: 0.861779
+------
+Class: binoculars, field glasses, opera glasses
+Score: -6.57106
+------
+Class: birdhouse
+Score: 3.98573
+------
+Class: boathouse
+Score: 0.430889
+------
+Class: bobsled, bobsleigh, bob
+Score: 0.538612
+------
+Class: bolo tie, bolo, bola tie, bola
+Score: 2.69306
+------
+Class: bonnet, poke bonnet
+Score: 0.861779
+------
+Class: bookcase
+Score: -6.03245
+------
+Class: bookshop, bookstore, bookstall
+Score: 3.98573
+------
+Class: bottlecap
+Score: 0.215445
+------
+Class: bow
+Score: 0.646334
+------
+Class: bow tie, bow-tie, bowtie
+Score: 2.47761
+------
+Class: brass, memorial tablet, plaque
+Score: 0.861779
+------
+Class: brassiere, bra, bandeau
+Score: -5.60156
+------
+Class: breakwater, groin, groyne, mole, bulwark, seawall, jetty
+Score: 3.98573
+------
+Class: breastplate, aegis, egis
+Score: 0.323167
+------
+Class: broom
+Score: 0.646334
+------
+Class: bucket, pail
+Score: 2.69306
+------
+Class: buckle
+Score: 0.861779
+------
+Class: bulletproof vest
+Score: -6.14017
+------
+Class: bullet train, bullet
+Score: 3.98573
+------
+Class: butcher shop, meat market
+Score: 0.430889
+------
+Class: cab, hack, taxi, taxicab
+Score: 0.430889
+------
+Class: caldron, cauldron
+Score: 3.01623
+------
+Class: candle, taper, wax light
+Score: 0.646334
+------
+Class: cannon
+Score: -7.54057
+------
+Class: canoe
+Score: 3.98573
+------
+Class: can opener, tin opener
+Score: 0.215445
+------
+Class: cardigan
+Score: 0.323167
+------
+Class: car mirror
+Score: 3.23167
+------
+Class: carousel, carrousel, merry-go-round, roundabout, whirligig
+Score: 0.646334
+------
+Class: carpenter's kit, tool kit
+Score: -7.75601
+------
+Class: carton
+Score: 3.98573
+------
+Class: car wheel
+Score: 0.323167
+------
+Class: cash machine, cash dispenser, automated teller machine, automatic teller machine, automated teller, automatic teller, ATM
+Score: 0.430889
+------
+Class: cassette
+Score: 2.9085
+------
+Class: cassette player
+Score: 0.646334
+------
+Class: castle
+Score: -7.32512
+------
+Class: catamaran
+Score: 3.98573
+------
+Class: CD player
+Score: 0.538612
+------
+Class: cello, violoncello
+Score: 0.430889
+------
+Class: cellular telephone, cellular phone, cellphone, cell, mobile phone
+Score: 3.01623
+------
+Class: chain
+Score: 0.646334
+------
+Class: chainlink fence
+Score: -7.2174
+------
+Class: chain mail, ring mail, mail, chain armor, chain armour, ring armor, ring armour
+Score: 3.98573
+------
+Class: chain saw, chainsaw
+Score: 0.646334
+------
+Class: chest
+Score: 0.430889
+------
+Class: chiffonier, commode
+Score: 3.23167
+------
+Class: chime, bell, gong
+Score: 0.754057
+------
+Class: china cabinet, china closet
+Score: -7.32512
+------
+Class: Christmas stocking
+Score: 3.98573
+------
+Class: church, church building
+Score: 0.538612
+------
+Class: cinema, movie theater, movie theatre, movie house, picture palace
+Score: 0.646334
+------
+Class: cleaver, meat cleaver, chopper
+Score: 3.12395
+------
+Class: cliff dwelling
+Score: 0.861779
+------
+Class: cloak
+Score: -6.78651
+------
+Class: clog, geta, patten, sabot
+Score: 3.98573
+------
+Class: cocktail shaker
+Score: 0.215445
+------
+Class: coffee mug
+Score: 0.646334
+------
+Class: coffeepot
+Score: 3.01623
+------
+Class: coil, spiral, volute, whorl, helix
+Score: 0.754057
+------
+Class: combination lock
+Score: -6.35562
+------
+Class: computer keyboard, keypad
+Score: 3.98573
+------
+Class: confectionery, confectionary, candy store
+Score: 0.430889
+------
+Class: container ship, containership, container vessel
+Score: 0.430889
+------
+Class: convertible
+Score: 2.9085
+------
+Class: corkscrew, bottle screw
+Score: 0.861779
+------
+Class: cornet, horn, trumpet, trump
+Score: -6.67879
+------
+Class: cowboy boot
+Score: 3.98573
+------
+Class: cowboy hat, ten-gallon hat
+Score: 0.861779
+------
+Class: cradle
+Score: 0.430889
+------
+Class: crane
+Score: 2.9085
+------
+Class: crash helmet
+Score: 0.861779
+------
+Class: crate
+Score: -6.14017
+------
+Class: crib, cot
+Score: 3.98573
+------
+Class: Crock Pot
+Score: 0.538612
+------
+Class: croquet ball
+Score: 0.323167
+------
+Class: crutch
+Score: 2.9085
+------
+Class: cuirass
+Score: 0.754057
+------
+Class: dam, dike, dyke
+Score: -5.92473
+------
+Class: desk
+Score: 3.98573
+------
+Class: desktop computer
+Score: 0.430889
+------
+Class: dial telephone, dial phone
+Score: 0.430889
+------
+Class: diaper, nappy, napkin
+Score: 3.12395
+------
+Class: digital clock
+Score: 0.861779
+------
+Class: digital watch
+Score: -6.89423
+------
+Class: dining table, board
+Score: 3.98573
+------
+Class: dishrag, dishcloth
+Score: 0.538612
+------
+Class: dishwasher, dish washer, dishwashing machine
+Score: 0.538612
+------
+Class: disk brake, disc brake
+Score: 3.12395
+------
+Class: dock, dockage, docking facility
+Score: 0.861779
+------
+Class: dogsled, dog sled, dog sleigh
+Score: -6.57106
+------
+Class: dome
+Score: 3.98573
+------
+Class: doormat, welcome mat
+Score: 0.323167
+------
+Class: drilling platform, offshore rig
+Score: 0.646334
+------
+Class: drum, membranophone, tympan
+Score: 3.01623
+------
+Class: drumstick
+Score: 0.861779
+------
+Class: dumbbell
+Score: -5.81701
+------
+Class: Dutch oven
+Score: 3.98573
+------
+Class: electric fan, blower
+Score: 0.430889
+------
+Class: electric guitar
+Score: 0.538612
+------
+Class: electric locomotive
+Score: 3.01623
+------
+Class: entertainment center
+Score: 0.861779
+------
+Class: envelope
+Score: -6.2479
+------
+Class: espresso maker
+Score: 3.98573
+------
+Class: face powder
+Score: 0.646334
+------
+Class: feather boa, boa
+Score: 0.538612
+------
+Class: file, file cabinet, filing cabinet
+Score: 3.01623
+------
+Class: fireboat
+Score: 0.861779
+------
+Class: fire engine, fire truck
+Score: -6.46334
+------
+Class: fire screen, fireguard
+Score: 3.98573
+------
+Class: flagpole, flagstaff
+Score: 0.646334
+------
+Class: flute, transverse flute
+Score: 0.646334
+------
+Class: folding chair
+Score: 3.01623
+------
+Class: football helmet
+Score: 0.861779
+------
+Class: forklift
+Score: -6.2479
+------
+Class: fountain
+Score: 3.98573
+------
+Class: fountain pen
+Score: 0.646334
+------
+Class: four-poster
+Score: 0.969501
+------
+Class: freight car
+Score: 2.9085
+------
+Class: French horn, horn
+Score: 0.861779
+------
+Class: frying pan, frypan, skillet
+Score: -6.03245
+------
+Class: fur coat
+Score: 3.98573
+------
+Class: garbage truck, dustcart
+Score: 0.646334
+------
+Class: gasmask, respirator, gas helmet
+Score: 0.969501
+------
+Class: gas pump, gasoline pump, petrol pump, island dispenser
+Score: 2.9085
+------
+Class: goblet
+Score: 0.861779
+------
+Class: go-kart
+Score: -6.03245
+------
+Class: golf ball
+Score: 3.98573
+------
+Class: golfcart, golf cart
+Score: 0.538612
+------
+Class: gondola
+Score: 0.646334
+------
+Class: gong, tam-tam
+Score: 3.12395
+------
+Class: gown
+Score: 0.861779
+------
+Class: grand piano, grand
+Score: -6.46334
+------
+Class: greenhouse, nursery, glasshouse
+Score: 3.98573
+------
+Class: grille, radiator grille
+Score: 0.430889
+------
+Class: grocery store, grocery, food market, market
+Score: 0.430889
+------
+Class: guillotine
+Score: 3.01623
+------
+Class: hair slide
+Score: 0.754057
+------
+Class: hair spray
+Score: -6.46334
+------
+Class: half track
+Score: 3.98573
+------
+Class: hammer
+Score: 0.215445
+------
+Class: hamper
+Score: 0.430889
+------
+Class: hand blower, blow dryer, blow drier, hair dryer, hair drier
+Score: 3.01623
+------
+Class: hand-held computer, hand-held microcomputer
+Score: 0.754057
+------
+Class: handkerchief, hankie, hanky, hankey
+Score: -6.89423
+------
+Class: hard disc, hard disk, fixed disk
+Score: 3.98573
+------
+Class: harmonica, mouth organ, harp, mouth harp
+Score: 0.861779
+------
+Class: harp
+Score: 0.430889
+------
+Class: harvester, reaper
+Score: 2.9085
+------
+Class: hatchet
+Score: 0.754057
+------
+Class: holster
+Score: -7.00195
+------
+Class: home theater, home theatre
+Score: 3.98573
+------
+Class: honeycomb
+Score: 0.646334
+------
+Class: hook, claw
+Score: 0.430889
+------
+Class: hoopskirt, crinoline
+Score: 3.12395
+------
+Class: horizontal bar, high bar
+Score: 0.861779
+------
+Class: horse cart, horse-cart
+Score: -6.89423
+------
+Class: hourglass
+Score: 3.98573
+------
+Class: iPod
+Score: 0.646334
+------
+Class: iron, smoothing iron
+Score: 0.430889
+------
+Class: jack-o'-lantern
+Score: 3.44712
+------
+Class: jean, blue jean, denim
+Score: 0.754057
+------
+Class: jeep, landrover
+Score: -7.54057
+------
+Class: jersey, T-shirt, tee shirt
+Score: 3.98573
+------
+Class: jigsaw puzzle
+Score: 0.538612
+------
+Class: jinrikisha, ricksha, rickshaw
+Score: 0.215445
+------
+Class: joystick
+Score: 3.44712
+------
+Class: kimono
+Score: 0.646334
+------
+Class: knee pad
+Score: -7.54057
+------
+Class: knot
+Score: 3.98573
+------
+Class: lab coat, laboratory coat
+Score: 0.430889
+------
+Class: ladle
+Score: 0.107722
+------
+Class: lampshade, lamp shade
+Score: 3.33939
+------
+Class: laptop, laptop computer
+Score: 0.646334
+------
+Class: lawn mower, mower
+Score: -7.2174
+------
+Class: lens cap, lens cover
+Score: 3.98573
+------
+Class: letter opener, paper knife, paperknife
+Score: -0.107722
+------
+Class: lifeboat
+Score: 3.01623
+------
+Class: lighter, light, igniter, ignitor
+Score: 0.538612
+------
+Class: limousine, limo
+Score: -6.57106
+------
+Class: liner, ocean liner
+Score: 3.98573
+------
+Class: lipstick, lip rouge
+Score: 0.323167
+------
+Class: Loafer
+Score: 0.215445
+------
+Class: lotion
+Score: 3.23167
+------
+Class: loudspeaker, speaker, speaker unit, loudspeaker system, speaker system
+Score: 0.646334
+------
+Class: loupe, jeweler's loupe
+Score: -7.10968
+------
+Class: lumbermill, sawmill
+Score: 3.98573
+------
+Class: magnetic compass
+Score: 0.646334
+------
+Class: mailbag, postbag
+Score: 0.215445
+------
+Class: mailbox, letter box
+Score: 3.23167
+------
+Class: maillot
+Score: 0.646334
+------
+Class: maillot, tank suit
+Score: -7.2174
+------
+Class: manhole cover
+Score: 3.98573
+------
+Class: maraca
+Score: 0.215445
+------
+Class: marimba, xylophone
+Score: 0.215445
+------
+Class: mask
+Score: 3.12395
+------
+Class: matchstick
+Score: 0.754057
+------
+Class: maypole
+Score: -6.35562
+------
+Class: maze, labyrinth
+Score: 3.98573
+------
+Class: medicine chest, medicine cabinet
+Score: 0.646334
+------
+Class: megalith, megalithic structure
+Score: 3.12395
+------
+Class: microphone, mike
+Score: 0.861779
+------
+Class: microwave, microwave oven
+Score: -6.46334
+------
+Class: military uniform
+Score: 3.98573
+------
+Class: milk can
+Score: 0.430889
+------
+Class: minibus
+Score: 0.538612
+------
+Class: miniskirt, mini
+Score: 3.01623
+------
+Class: minivan
+Score: 0.754057
+------
+Class: missile
+Score: -6.57106
+------
+Class: mitten
+Score: 3.98573
+------
+Class: mixing bowl
+Score: 0.861779
+------
+Class: mobile home, manufactured home
+Score: 0.323167
+------
+Class: Model T
+Score: 3.33939
+------
+Class: modem
+Score: 0.754057
+------
+Class: monastery
+Score: -7.10968
+------
+Class: monitor
+Score: 3.98573
+------
+Class: moped
+Score: 0.754057
+------
+Class: mortar
+Score: 0.107722
+------
+Class: mortarboard
+Score: 3.33939
+------
+Class: mosque
+Score: 0.646334
+------
+Class: mosquito net
+Score: -7.43284
+------
+Class: motor scooter, scooter
+Score: 3.98573
+------
+Class: mountain bike, all-terrain bike, off-roader
+Score: 0.538612
+------
+Class: mountain tent
+Score: 0.107722
+------
+Class: mouse, computer mouse
+Score: 3.44712
+------
+Class: mousetrap
+Score: 0.538612
+------
+Class: moving van
+Score: -7.54057
+------
+Class: muzzle
+Score: 3.98573
+------
+Class: nail
+Score: 0.215445
+------
+Class: neck brace
+Score: 0.323167
+------
+Class: necklace
+Score: 3.44712
+------
+Class: nipple
+Score: 0.646334
+------
+Class: notebook, notebook computer
+Score: -7.10968
+------
+Class: obelisk
+Score: 3.98573
+------
+Class: oboe, hautboy, hautbois
+Score: -0.215445
+------
+Class: ocarina, sweet potato
+Score: 0.430889
+------
+Class: odometer, hodometer, mileometer, milometer
+Score: 3.44712
+------
+Class: oil filter
+Score: 0.754057
+------
+Class: organ, pipe organ
+Score: -6.89423
+------
+Class: oscilloscope, scope, cathode-ray oscilloscope, CRO
+Score: 3.98573
+------
+Class: oxcart
+Score: 0.646334
+------
+Class: oxygen mask
+Score: 3.23167
+------
+Class: packet
+Score: 0.754057
+------
+Class: paddle, boat paddle
+Score: -6.67879
+------
+Class: paddlewheel, paddle wheel
+Score: 3.98573
+------
+Class: padlock
+Score: 0.107722
+------
+Class: paintbrush
+Score: 0.646334
+------
+Class: pajama, pyjama, pj's, jammies
+Score: 2.9085
+------
+Class: palace
+Score: 0.754057
+------
+Class: panpipe, pandean pipe, syrinx
+Score: -5.81701
+------
+Class: paper towel
+Score: 3.98573
+------
+Class: parallel bars, bars
+Score: 0.861779
+------
+Class: park bench
+Score: 2.26217
+------
+Class: parking meter
+Score: 0.861779
+------
+Class: passenger car, coach, carriage
+Score: -3.98573
+------
+Class: patio, terrace
+Score: 3.98573
+------
+Class: pay-phone, pay-station
+Score: 0.107722
+------
+Class: pedestal, plinth, footstall
+Score: 0.646334
+------
+Class: pencil box, pencil case
+Score: 1.40039
+------
+Class: pencil sharpener
+Score: 0.861779
+------
+Class: perfume, essence
+Score: -2.80078
+------
+Class: Petri dish
+Score: 3.98573
+------
+Class: photocopier
+Score: -0.861779
+------
+Class: pickelhaube
+Score: 0.646334
+------
+Class: picket fence, paling
+Score: 0.861779
+------
+Class: pickup, pickup truck
+Score: -2.26217
+------
+Class: pier
+Score: 3.98573
+------
+Class: piggy bank, penny bank
+Score: 1.40039
+------
+Class: pill bottle
+Score: -0.323167
+------
+Class: pillow
+Score: 0.430889
+------
+Class: ping-pong ball
+Score: 1.40039
+------
+Class: pinwheel
+Score: -4.95523
+------
+Class: pirate, pirate ship
+Score: 3.98573
+------
+Class: pitcher, ewer
+Score: 1.40039
+------
+Class: plane, carpenter's plane, woodworking plane
+Score: 0.107722
+------
+Class: planetarium
+Score: 1.50811
+------
+Class: plastic bag
+Score: 1.18495
+------
+Class: plate rack
+Score: -3.878
+------
+Class: plow, plough
+Score: 3.98573
+------
+Class: plunger, plumber's helper
+Score: 0.646334
+------
+Class: Polaroid camera, Polaroid Land camera
+Score: 0.215445
+------
+Class: pole
+Score: 2.36989
+------
+Class: police van, police wagon, paddy wagon, patrol wagon, wagon, black Maria
+Score: 1.18495
+------
+Class: poncho
+Score: -3.878
+------
+Class: pool table, billiard table, snooker table
+Score: 3.98573
+------
+Class: pop bottle, soda bottle
+Score: 0.323167
+------
+Class: pot, flowerpot
+Score: 0.107722
+------
+Class: potter's wheel
+Score: 3.12395
+------
+Class: power drill
+Score: 1.07722
+------
+Class: prayer rug, prayer mat
+Score: -6.67879
+------
+Class: printer
+Score: 3.98573
+------
+Class: prison, prison house
+Score: 0.107722
+------
+Class: projectile, missile
+Score: 0.107722
+------
+Class: projector
+Score: 3.44712
+------
+Class: puck, hockey puck
+Score: 1.07722
+------
+Class: punching bag, punch bag, punching ball, punchball
+Score: -7.43284
+------
+Class: purse
+Score: 3.98573
+------
+Class: racer, race car, racing car
+Score: 3.12395
+------
+Class: racket, racquet
+Score: 1.18495
+------
+Class: radiator
+Score: -6.78651
+------
+Class: radio, wireless
+Score: 3.98573
+------
+Class: radio telescope, radio reflector
+Score: 0.538612
+------
+Class: rain barrel
+Score: 0.215445
+------
+Class: recreational vehicle, RV, R.V.
+Score: 2.80078
+------
+Class: reel
+Score: 1.18495
+------
+Class: reflex camera
+Score: -6.67879
+------
+Class: refrigerator, icebox
+Score: 3.98573
+------
+Class: remote control, remote
+Score: 0.430889
+------
+Class: restaurant, eating house, eating place, eatery
+Score: -0.107722
+------
+Class: revolver, six-gun, six-shooter
+Score: 2.9085
+------
+Class: rifle
+Score: 1.07722
+------
+Class: rocking chair, rocker
+Score: -6.78651
+------
+Class: rotisserie
+Score: 3.98573
+------
+Class: rubber eraser, rubber, pencil eraser
+Score: 0.430889
+------
+Class: rugby ball
+Score: -0.215445
+------
+Class: rule, ruler
+Score: 3.01623
+------
+Class: running shoe
+Score: 0.969501
+------
+Class: safe
+Score: -7.43284
+------
+Class: safety pin
+Score: 3.98573
+------
+Class: saltshaker, salt shaker
+Score: 0.646334
+------
+Class: sarong
+Score: 2.9085
+------
+Class: sax, saxophone
+Score: 1.07722
+------
+Class: scabbard
+Score: -7.2174
+------
+Class: scale, weighing machine
+Score: 3.98573
+------
+Class: school bus
+Score: 0.430889
+------
+Class: scoreboard
+Score: 3.01623
+------
+Class: screen, CRT screen
+Score: 1.18495
+------
+Class: screw
+Score: -7.10968
+------
+Class: screwdriver
+Score: 3.98573
+------
+Class: seat belt, seatbelt
+Score: 0.107722
+------
+Class: sewing machine
+Score: -0.107722
+------
+Class: shield, buckler
+Score: 3.01623
+------
+Class: shoe shop, shoe-shop, shoe store
+Score: 1.18495
+------
+Class: shoji
+Score: -7.2174
+------
+Class: shopping basket
+Score: 3.98573
+------
+Class: shopping cart
+Score: 0.754057
+------
+Class: shovel
+Score: 0.215445
+------
+Class: shower cap
+Score: 2.58534
+------
+Class: shower curtain
+Score: 1.18495
+------
+Class: ski
+Score: -6.46334
+------
+Class: ski mask
+Score: 3.98573
+------
+Class: sleeping bag
+Score: 0.430889
+------
+Class: slide rule, slipstick
+Score: -0.107722
+------
+Class: sliding door
+Score: 2.58534
+------
+Class: slot, one-armed bandit
+Score: 1.07722
+------
+Class: snorkel
+Score: -6.03245
+------
+Class: snowmobile
+Score: 3.98573
+------
+Class: snowplow, snowplough
+Score: 0.323167
+------
+Class: soap dispenser
+Score: -0.323167
+------
+Class: soccer ball
+Score: 2.80078
+------
+Class: sock
+Score: 0.969501
+------
+Class: solar dish, solar collector, solar furnace
+Score: -7.2174
+------
+Class: sombrero
+Score: 3.98573
+------
+Class: soup bowl
+Score: 0.430889
+------
+Class: space bar
+Score: -0.215445
+------
+Class: space heater
+Score: 2.58534
+------
+Class: space shuttle
+Score: 0.969501
+------
+Class: spatula
+Score: -7.10968
+------
+Class: speedboat
+Score: 3.98573
+------
+Class: spider web, spider's web
+Score: 0.323167
+------
+Class: spindle
+Score: -0.107722
+------
+Class: sports car, sport car
+Score: 2.58534
+------
+Class: spotlight, spot
+Score: 0.969501
+------
+Class: stage
+Score: -7.2174
+------
+Class: steam locomotive
+Score: 3.98573
+------
+Class: steel arch bridge
+Score: 0.323167
+------
+Class: stethoscope
+Score: 2.80078
+------
+Class: stole
+Score: 0.969501
+------
+Class: stone wall
+Score: -7.75601
+------
+Class: stopwatch, stop watch
+Score: 3.98573
+------
+Class: stove
+Score: 0.323167
+------
+Class: strainer
+Score: -0.107722
+------
+Class: streetcar, tram, tramcar, trolley, trolley car
+Score: 2.80078
+------
+Class: stretcher
+Score: 0.861779
+------
+Class: studio couch, day bed
+Score: -7.64829
+------
+Class: stupa, tope
+Score: 3.98573
+------
+Class: submarine, pigboat, sub, U-boat
+Score: 0.215445
+------
+Class: suit, suit of clothes
+Score: -0.107722
+------
+Class: sundial
+Score: 3.12395
+------
+Class: sunglass
+Score: 0.861779
+------
+Class: sunglasses, dark glasses, shades
+Score: -7.97145
+------
+Class: sunscreen, sunblock, sun blocker
+Score: 3.98573
+------
+Class: suspension bridge
+Score: 0.323167
+------
+Class: swab, swob, mop
+Score: -0.107722
+------
+Class: sweatshirt
+Score: 2.80078
+------
+Class: swimming trunks, bathing trunks
+Score: 0.861779
+------
+Class: swing
+Score: -7.32512
+------
+Class: switch, electric switch, electrical switch
+Score: 3.98573
+------
+Class: syringe
+Score: 0.538612
+------
+Class: tank, army tank, armored combat vehicle, armoured combat vehicle
+Score: 2.80078
+------
+Class: tape player
+Score: 0.861779
+------
+Class: teapot
+Score: -7.10968
+------
+Class: teddy, teddy bear
+Score: 3.98573
+------
+Class: television, television system
+Score: 0.538612
+------
+Class: tennis ball
+Score: -0.107722
+------
+Class: thatch, thatched roof
+Score: 3.01623
+------
+Class: theater curtain, theatre curtain
+Score: 0.861779
+------
+Class: thimble
+Score: -6.89423
+------
+Class: thresher, thrasher, threshing machine
+Score: 3.98573
+------
+Class: throne
+Score: 0.323167
+------
+Class: tile roof
+Score: -0.107722
+------
+Class: toaster
+Score: 3.01623
+------
+Class: tobacco shop, tobacconist shop, tobacconist
+Score: 0.969501
+------
+Class: toilet seat
+Score: -6.67879
+------
+Class: torch
+Score: 3.98573
+------
+Class: tow truck, tow car, wrecker
+Score: -0.107722
+------
+Class: toyshop
+Score: 3.01623
+------
+Class: tractor
+Score: 0.969501
+------
+Class: trailer truck, tractor trailer, trucking rig, rig, articulated lorry, semi
+Score: -6.57106
+------
+Class: tray
+Score: 3.98573
+------
+Class: trench coat
+Score: 0.323167
+------
+Class: trimaran
+Score: 2.80078
+------
+Class: tripod
+Score: 0.969501
+------
+Class: triumphal arch
+Score: -7.10968
+------
+Class: trolleybus, trolley coach, trackless trolley
+Score: 3.98573
+------
+Class: trombone
+Score: 0.646334
+------
+Class: tub, vat
+Score: -0.107722
+------
+Class: turnstile
+Score: 2.9085
+------
+Class: typewriter keyboard
+Score: 1.07722
+------
+Class: umbrella
+Score: -7.00195
+------
+Class: unicycle, monocycle
+Score: 3.98573
+------
+Class: upright, upright piano
+Score: 0.430889
+------
+Class: vacuum, vacuum cleaner
+Score: -0.215445
+------
+Class: vase
+Score: 2.80078
+------
+Class: vault
+Score: 1.07722
+------
+Class: velvet
+Score: -6.2479
+------
+Class: vending machine
+Score: 3.98573
+------
+Class: vestment
+Score: 0.430889
+------
+Class: viaduct
+Score: -0.107722
+------
+Class: violin, fiddle
+Score: 3.01623
+------
+Class: volleyball
+Score: 0.969501
+------
+Class: waffle iron
+Score: -7.2174
+------
+Class: wall clock
+Score: 3.98573
+------
+Class: wallet, billfold, notecase, pocketbook
+Score: 0.430889
+------
+Class: wardrobe, closet, press
+Score: -0.107722
+------
+Class: warplane, military plane
+Score: 3.12395
+------
+Class: washbasin, handbasin, washbowl, lavabo, wash-hand basin
+Score: 0.969501
+------
+Class: washer, automatic washer, washing machine
+Score: -7.32512
+------
+Class: water bottle
+Score: 3.98573
+------
+Class: water jug
+Score: 0.430889
+------
+Class: water tower
+Score: -0.107722
+------
+Class: whiskey jug
+Score: 3.01623
+------
+Class: whistle
+Score: 1.18495
+------
+Class: wig
+Score: -6.67879
+------
+Class: window screen
+Score: 3.98573
+------
+Class: window shade
+Score: 0.215445
+------
+Class: wine bottle
+Score: 3.01623
+------
+Class: wing
+Score: 1.18495
+------
+Class: wok
+Score: -6.89423
+------
+Class: wooden spoon
+Score: 3.98573
+------
+Class: wool, woolen, woollen
+Score: 0.538612
+------
+Class: worm fence, snake fence, snake-rail fence, Virginia fence
+Score: -0.107722
+------
+Class: wreck
+Score: 3.01623
+------
+Class: yawl
+Score: 1.07722
+------
+Class: yurt
+Score: -7.43284
+------
+Class: web site, website, internet site, site
+Score: 3.98573
+------
+Class: comic book
+Score: 0.430889
+------
+Class: street sign
+Score: 3.01623
+------
+Class: traffic light, traffic signal, stoplight
+Score: 1.07722
+------
+Class: book jacket, dust cover, dust jacket, dust wrapper
+Score: -7.10968
+------
+Class: menu
+Score: 3.98573
+------
+Class: plate
+Score: 0.538612
+------
+Class: guacamole
+Score: 0.107722
+------
+Class: consomme
+Score: 3.12395
+------
+Class: hot pot, hotpot
+Score: 1.18495
+------
+Class: trifle
+Score: -7.00195
+------
+Class: ice cream, icecream
+Score: 3.98573
+------
+Class: ice lolly, lolly, lollipop, popsicle
+Score: 0.323167
+------
+Class: French loaf
+Score: 0.107722
+------
+Class: bagel, beigel
+Score: 3.12395
+------
+Class: pretzel
+Score: 1.18495
+------
+Class: cheeseburger
+Score: -7.00195
+------
+Class: hotdog, hot dog, red hot
+Score: 3.98573
+------
+Class: mashed potato
+Score: 0.323167
+------
+Class: head cabbage
+Score: 0.107722
+------
+Class: broccoli
+Score: 3.12395
+------
+Class: cauliflower
+Score: 1.07722
+------
+Class: zucchini, courgette
+Score: -7.2174
+------
+Class: spaghetti squash
+Score: 3.98573
+------
+Class: acorn squash
+Score: 0.215445
+------
+Class: butternut squash
+Score: 0.107722
+------
+Class: cucumber, cuke
+Score: 2.9085
+------
+Class: artichoke, globe artichoke
+Score: 1.07722
+------
+Class: bell pepper
+Score: -6.89423
+------
+Class: cardoon
+Score: 3.98573
+------
+Class: mushroom
+Score: 0.215445
+------
+Class: strawberry
+Score: 3.23167
+------
+Class: orange
+Score: 1.07722
+------
+Class: lemon
+Score: -7.64829
+------
+Class: fig
+Score: 3.98573
+------
+Class: pineapple, ananas
+Score: 0.754057
+------
+Class: banana
+Score: 0.107722
+------
+Class: jackfruit, jak, jack
+Score: 3.23167
+------
+Class: custard apple
+Score: 1.07722
+------
+Class: pomegranate
+Score: -7.97145
+------
+Class: hay
+Score: 3.98573
+------
+Class: carbonara
+Score: 0.538612
+------
+Class: dough
+Score: 3.12395
+------
+Class: meat loaf, meatloaf
+Score: 1.07722
+------
+Class: pizza, pizza pie
+Score: -7.43284
+------
+Class: potpie
+Score: 3.98573
+------
+Class: burrito
+Score: 0.323167
+------
+Class: espresso
+Score: 3.55484
+------
+Class: cup
+Score: 1.07722
+------
+Class: eggnog
+Score: -8.07918
+------
+Class: alp
+Score: 3.98573
+------
+Class: bubble
+Score: 0.215445
+------
+Class: cliff, drop, drop-off
+Score: -0.107722
+------
+Class: coral reef
+Score: 3.01623
+------
+Class: geyser
+Score: 0.969501
+------
+Class: lakeside, lakeshore
+Score: -6.78651
+------
+Class: promontory, headland, head, foreland
+Score: 3.98573
+------
+Class: sandbar, sand bar
+Score: 0.107722
+------
+Class: seashore, coast, seacoast, sea-coast
+Score: -0.107722
+------
+Class: valley, vale
+Score: 3.01623
+------
+Class: volcano
+Score: 0.969501
+------
+Class: ballplayer, baseball player
+Score: -7.00195
+------
+Class: groom, bridegroom
+Score: 3.98573
+------
+Class: scuba diver
+Score: -0.107722
+------
+Class: rapeseed
+Score: 0.107722
+------
+Class: daisy
+Score: 2.47761
+------
+Class: yellow lady's slipper, yellow lady-slipper, Cypripedium calceolus, Cypripedium parviflorum
+Score: 1.07722
+------
+Class: corn
+Score: -5.49384
+------
+Class: acorn
+Score: 3.98573
+------
+Class: hip, rose hip, rosehip
+Score: 0.430889
+------
+Class: buckeye, horse chestnut, conker
+Score: 0.215445
+------
+Class: coral fungus
+Score: 2.58534
+------
+Class: agaric
+Score: 1.07722
+------
+Class: gyromitra
+Score: -5.92473
+------
+Class: stinkhorn, carrion fungus
+Score: 3.98573
+------
+Class: earthstar
+Score: 0.646334
+------
+Class: hen-of-the-woods, hen of the woods, Polyporus frondosus, Grifola frondosa
+Score: 0.215445
+------
+Class: bolete
+Score: 2.69306
+------
+Class: ear, spike, capitulum
+Score: 1.18495
+------
+Class: 1000  toilet tissue, toilet paper, bathroom tissue
+Score: -5.70928
+------
