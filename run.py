@@ -79,6 +79,23 @@ def travel_tag_notes(tag_id, TOK, n=1):
 
     note_dest = ID_DEST[note_id]
     doc = note['body']
+
+    # convert resource link
+    res = json.loads(
+      subprocess.Popen(
+          "curl http://localhost:41184/notes/" + note_id + "/resources?" + TOK +
+          "&fields=id,file_extension&limits=100",
+          stdout=subprocess.PIPE).stdout.read())
+    for i in res['items']:
+      id = i['id']
+      ori_str = ':/'+id
+      res_dest = ID_DEST[id]
+      new_link_url = os.path.relpath(res_dest, N_FDR)
+      doc = doc.replace(ori_str, new_link_url)
+
+
+
+
        
     in_links = INLINE_LINK_RE.findall(doc)
 
