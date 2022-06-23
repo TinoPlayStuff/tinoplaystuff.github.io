@@ -6,10 +6,10 @@ import datetime, re
 
 PUBTAG = "published"
 URL = "http://localhost:41184/"
-# TOK = "token=4ccabec736a39dcfeac27efc8ab253ca4760c7aeb2bd468b5932e2e2c181b08557a507081f88fb0a80efb66650fc09b9fde7c4202f437cf73b79c18c55e0456a"
-TOK = "token=4444503f811297abb7e0819eb3b32c33a3c7542a50325233ea6eff9889b4315bc437621aca8b90221b553d3bb0358a4d6e4b3225849d483c87394d18df38bf1e"
-N_FDR = "_posts"
-R_FDR = "_resources"
+TOK = "token=4ccabec736a39dcfeac27efc8ab253ca4760c7aeb2bd468b5932e2e2c181b08557a507081f88fb0a80efb66650fc09b9fde7c4202f437cf73b79c18c55e0456a"
+# TOK = "token=4444503f811297abb7e0819eb3b32c33a3c7542a50325233ea6eff9889b4315bc437621aca8b90221b553d3bb0358a4d6e4b3225849d483c87394d18df38bf1e"
+N_FDR = "./_posts"
+R_FDR = "./_resources"
 ID_DEST = {}
 DEST_ID = {}
 
@@ -80,6 +80,11 @@ def travel_tag_notes(tag_id, TOK, n=1):
     note_dest = ID_DEST[note_id]
     doc = note['body']
 
+    # last_modified_at: 2016-03-09T16:20:02-05:00
+    update_date_line = "last_modified_at: " + datetime.datetime.fromtimestamp(
+        int(note['user_updated_time']) / 1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
+
+
     # convert resource link
     res = json.loads(
       subprocess.Popen(
@@ -96,9 +101,8 @@ def travel_tag_notes(tag_id, TOK, n=1):
 
 
 
-       
+    # convert markdown link
     in_links = INLINE_LINK_RE.findall(doc)
-
     for link in in_links:
       s = link.rfind("/")
       link_id = link[s+1:-1]
@@ -113,9 +117,14 @@ def travel_tag_notes(tag_id, TOK, n=1):
       doc = doc.replace(link, new_link)
 
       # print(res_dest)
+
+
+
+    
     
     yaml_head = "---\n"
     yaml_head += tag_line + "\n"
+    yaml_head += update_date_line +  "\n"
     yaml_head += "---\n"
 
     f = open(note_dest, "w",encoding="utf-8")
@@ -211,6 +220,9 @@ def main():
     print("\n\n\nsome thing wrong: maybe duplicate id\n\n")
   # dd = subprocess.Popen("curl http://localhost:41184/tags/" + PUBTAGID + "/notes?token=4ccabec736a39dcfeac27efc8ab253ca4760c7aeb2bd468b5932e2e2c181b08557a507081f88fb0a80efb66650fc09b9fde7c4202f437cf73b79c18c55e0456a", stdout=subprocess.PIPE).stdout.read()
   # print("\n\n\n", dd)
+
+  os.makedirs(N_FDR, exist_ok=True)
+  os.makedirs(R_FDR, exist_ok=True)
 
   travel_tag_notes(PUBTAGID, TOK)
 
