@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-import sys, glob, os, subprocess, json
-from pathlib import Path
+import os, subprocess, json
 import datetime, re
 
 #. token from joplin -> Tool -> Options -> Web Clipper -> Authorization token:
-TOK = "4ccabec736a39dcfeac27efc8ab253ca4760c7aeb2bd468b5932e2e2c181b08557a507081f88fb0a80efb66650fc09b9fde7c4202f437cf73b79c18c55e0456a"
-# TOK = "4444503f811297abb7e0819eb3b32c33a3c7542a50325233ea6eff9889b4315bc437621aca8b90221b553d3bb0358a4d6e4b3225849d483c87394d18df38bf1e"
+# TOK = "4ccabec736a39dcfeac27efc8ab253ca4760c7aeb2bd468b5932e2e2c181b08557a507081f88fb0a80efb66650fc09b9fde7c4202f437cf73b79c18c55e0456a"
+TOK = "4444503f811297abb7e0819eb3b32c33a3c7542a50325233ea6eff9889b4315bc437621aca8b90221b553d3bb0358a4d6e4b3225849d483c87394d18df38bf1e"
 
 PUBTAG = "published"  # note with this tag will be extracted
 N_FDR = "./_posts"  # where to put the exported posts
@@ -30,6 +29,8 @@ def get_tag_id(_tag, TOK, n=1):
   tags = json.loads(
       subprocess.Popen("curl " + URL + "tags?" + TOK + "&page=" + str(n),
                        stdout=subprocess.PIPE).stdout.read())
+  if 'error' in tags.keys():
+    return 'error'
 
   # compare tags' title
   for i in tags['items']:
@@ -254,6 +255,9 @@ def main():
 
   # 1. get publication tag's id
   PUBTAGID = get_tag_id(PUBTAG, TOK, n=1)
+  if PUBTAGID == 'error':
+    print("\n\n\nmaybe check your token ...")
+    return
   if PUBTAGID is None:
     print ("\n\n\nno note has tag: ", PUBTAG)
     return

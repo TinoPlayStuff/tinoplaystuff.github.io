@@ -5,4 +5,10 @@ layout: posts_last_updated
 author_profile: true
 ---
 
-<span class="taxonomy__section">Post by updated <a href="/year-archive/"  class="taxonomy__count">dda</a></span>
+<h1 class="page__title">
+    Posts by Update Date
+    <span style="float:right;font-weight: normal;font-size: 55%;vertical-align: super;">
+    <a href="/year-archive/">☛ by created date</a>
+    </span>
+</h1>
+
