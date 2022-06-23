@@ -221,7 +221,8 @@ sass:
 # Outputting
 # permalink: /:categories/:title/
 # permalink: /:year/:month/:day/:title:output_ext
-permalink: /:year-:month-:day-:title.md
+# permalink: /:year-:month-:day-:title.md
+permalink: /:path.md
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
