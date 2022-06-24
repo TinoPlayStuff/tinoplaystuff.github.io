@@ -2,32 +2,40 @@
 import os, subprocess, json
 import datetime, re
 
-#. token from joplin -> Tool -> Options -> Web Clipper -> Authorization token:
-# TOK = "4ccabec736a39dcfeac27efc8ab253ca4760c7aeb2bd468b5932e2e2c181b08557a507081f88fb0a80efb66650fc09b9fde7c4202f437cf73b79c18c55e0456a"
-TOK = "4444503f811297abb7e0819eb3b32c33a3c7542a50325233ea6eff9889b4315bc437621aca8b90221b553d3bb0358a4d6e4b3225849d483c87394d18df38bf1e"
+# <- setting
+# token from joplin -> Tool -> Options -> Web Clipper -> Authorization token:
+TOK = "4ccabec736a39dcfeac27efc8ab253ca4760c7aeb2bd468b5932e2e2c181b08557a507081f88fb0a80efb66650fc09b9fde7c4202f437cf73b79c18c55e0456a"
+# TOK = "4444503f811297abb7e0819eb3b32c33a3c7542a50325233ea6eff9889b4315bc437621aca8b90221b553d3bb0358a4d6e4b3225849d483c87394d18df38bf1e"
+# TOK = "3832bfdfe1677749190eb8a910340e613035b1a4325d4d9ecca0d29b3f9fee1c561689430ff0fa338b7e197c45680afc87407c061ce91624fdce945a1f7227d7"
 
 PUBTAG = "published"  # note with this tag will be extracted
 N_FDR = "./_posts"  # where to put the exported posts
 R_FDR = "./_resources"  # where to put resource files (.jpg, .png, ...)
 URL = "http://localhost:41184/"
+# -> setting
 
-
-TOK = "token=" + TOK
-ID_DEST = {}
-DEST_ID = {}
-
-link_not_published = []
-link_false = []
-
+#. regular expression for finding markdown link (need to be improved)
 # INLINE_LINK_RE = re.compile(r'\[([^\]]+)\]\(:([^)]+)\)')
 INLINE_LINK_RE = re.compile(r'\[.*\]\(\:.*\)')
+
+# <- command string
+GET_TAG = "curl " + URL + "tags/"
+GET_NOTE = "curl " + URL + "notes/"
+TOK = "token=" + TOK
+# -> command string
+
+ID_DEST = {}  # mapping of id (markdown, resource) to dest
+DEST_ID = {}  # reverse mapping from dest to id
+
+link_not_published = []  # record of linked but not published notes
+link_false = []  # reocrd of links pointing to nonexisting notes
 
 
 # find the id of the specified id
 def get_tag_id(_tag, TOK, n=1):
   # get all tags from joplin
   tags = json.loads(
-      subprocess.Popen("curl " + URL + "tags?" + TOK + "&page=" + str(n),
+      subprocess.Popen(GET_TAG + "?" + TOK + "&page=" + str(n),
                        stdout=subprocess.PIPE).stdout.read())
   if 'error' in tags.keys():
     return 'error'
@@ -65,41 +73,39 @@ def check_add_dict(id, dest):
   return True
 
 
-
 def travel_tag_notes(tag_id, TOK, n=1):
   #. get all notes with PUBTAG
   notes = json.loads(
       subprocess.Popen(
-          "curl " + URL + "tags/" + tag_id + "/notes?" + TOK +
+          GET_TAG + tag_id + "/notes?" + TOK +
           "&fields=id,parent_id,title,user_created_time,user_updated_time,body"
           + "&limit=100&page=" + str(n),
           stdout=subprocess.PIPE).stdout.read())
-
 
   #. for each note
   for note in notes['items']:
     note_id = note['id']
 
     note_tags = json.loads(
-        subprocess.Popen("curl " + URL + "notes/" + note_id + "/tags?" + TOK +
-                         "&limit=100",
+        subprocess.Popen(GET_NOTE + note_id + "/tags?" + TOK + "&limit=100",
                          stdout=subprocess.PIPE).stdout.read())
     #^ a note shouldn't have more than 100 tags ...
     note['tags'] = [ii['title'] for ii in note_tags['items']]
     note['tags'].remove(PUBTAG)
-    tag_line = "tags: [" + ", ".join(x for x in note['tags']) +"]"
+    tag_line = "tags: [" + ", ".join(x for x in note['tags']) + "]"
 
     note_dest = ID_DEST[note_id]
     doc = note['body']
 
     # last_modified_at: 2016-03-09T16:20:02-05:00
     last_modified_line = "last_modified_at: " + datetime.datetime.fromtimestamp(
-        int(note['user_updated_time']) / 1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
+        int(note['user_updated_time']) /
+        1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
     #^ for minimal mistake theme show information
     last_updated_line = "last_updated: " + datetime.datetime.fromtimestamp(
-        int(note['user_updated_time']) / 1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
+        int(note['user_updated_time']) /
+        1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
     #^ for jekyll sort post
-
 
     # convert resource link
     #! this must be done before convert markdown link
@@ -109,8 +115,8 @@ def travel_tag_notes(tag_id, TOK, n=1):
     #    for resource, we only copy it
     #    for markdown, we need to generate it
     res = json.loads(
-        subprocess.Popen("curl " + URL + "notes/" + note_id + "/resources?" +
-                         TOK + "&fields=id,file_extension&limit=100",
+        subprocess.Popen(GET_NOTE + note_id + "/resources?" + TOK +
+                         "&fields=id,file_extension&limit=100",
                          stdout=subprocess.PIPE).stdout.read())
     #^ currently, only convert 100 resources
     for i in res['items']:
@@ -120,22 +126,19 @@ def travel_tag_notes(tag_id, TOK, n=1):
       new_link_url = os.path.relpath(res_dest, N_FDR)
       doc = doc.replace(ori_str, new_link_url)
 
-
-
-
     # convert markdown link
     #! note: this use simple pattern to find markdown links
     in_links = INLINE_LINK_RE.findall(doc)
     for link in in_links:
       s = link.rfind("/")
-      link_id = link[s+1:-1]
+      link_id = link[s + 1:-1]
 
       # deal if the link is not published or invalid
       if not link_id in ID_DEST.keys():
         try:
           #. if the link is a no published note ...
           ex_note = json.loads(
-              subprocess.Popen("curl " + URL + "notes/" + link_id + "?" + TOK +
+              subprocess.Popen(GET_NOTE + link_id + "?" + TOK +
                                "&fields=title,source_url",
                                stdout=subprocess.PIPE).stdout.read())["title"]
           ex_note = "[" + ex_note + "] linked in [" + note['title'] + "]"
@@ -145,47 +148,40 @@ def travel_tag_notes(tag_id, TOK, n=1):
           # maybe use source_url?
         except:
           #. if the link is invalid (maybe sample in code block)
-          link_false.append("fake link [" + link_id + "] shown in [" + note['title'] + "]")
+          link_false.append("fake link [" + link_id + "] shown in [" +
+                            note['title'] + "]")
           print('seems invalid markdown link\n')
           # maybe use source_url?
         continue
 
-
       link_dest = ID_DEST[link_id]
       new_link_url = os.path.relpath(link_dest, N_FDR)
-      new_link = link[0:s-1]+new_link_url+')'
+      new_link = link[0:s - 1] + new_link_url + ')'
 
       doc = doc.replace(link, new_link)
 
     yaml_head = "---\n"
     yaml_head += tag_line + "\n"
-    yaml_head += last_modified_line +  "\n"
-    yaml_head += last_updated_line +  "\n"
+    yaml_head += last_modified_line + "\n"
+    yaml_head += last_updated_line + "\n"
     yaml_head += "---\n"
 
-    f = open(note_dest, "w",encoding="utf-8")
+    f = open(note_dest, "w", encoding="utf-8")
     f.write(yaml_head)
     f.write(doc)
     f.close()
 
   if notes['has_more']:
-    return travel_tag_notes(tag_id, TOK, n+1)
+    return travel_tag_notes(tag_id, TOK, n + 1)
   else:
     return True
-
-
-
-
-
-
-
 
 
 def add_resource(note_id, TOK, n=1):
   #. get resource list
   res = json.loads(
-      subprocess.Popen("curl " + URL + "notes/" + note_id + "/resources?" +
-                       TOK + "&fields=id,file_extension&limit=100",
+      subprocess.Popen(GET_NOTE + note_id + "/resources?" + TOK +
+                       "&fields=id,file_extension&limit=100",
                        stdout=subprocess.PIPE).stdout.read())
 
   for i in res['items']:
@@ -207,7 +203,7 @@ def add_resource(note_id, TOK, n=1):
       return False
 
   if res['has_more']:
-    return add_resource(id, TOK, n+1)
+    return add_resource(id, TOK, n + 1)
   else:
     return True
 
@@ -218,7 +214,7 @@ def travel_tag_notes_pre(tag_id, TOK, n=1):
   #. get notes with PUBID
   notes = json.loads(
       subprocess.Popen(
-          "curl " + URL + "tags/" + tag_id + "/notes?" + TOK +
+          GET_TAG + tag_id + "/notes?" + TOK +
           "&fields=id,parent_id,title,user_created_time,user_updated_time,body",
           stdout=subprocess.PIPE).stdout.read())
 
@@ -242,13 +238,10 @@ def travel_tag_notes_pre(tag_id, TOK, n=1):
     if not o:
       return False
 
-
   if notes['has_more']:
-    return travel_tag_notes_pre(tag_id, TOK, n+1)
+    return travel_tag_notes_pre(tag_id, TOK, n + 1)
   else:
     return True
-
-
 
 
 def main():
@@ -259,7 +252,7 @@ def main():
     print("\n\n\nmaybe check your token ...")
     return
   if PUBTAGID is None:
-    print ("\n\n\nno note has tag: ", PUBTAG)
+    print("\n\n\nno note has tag: ", PUBTAG)
     return
 
   # 2. see all notes with pubtag, generate id-dest dictionary
@@ -274,8 +267,8 @@ def main():
   # 4. extract notes and resources
   travel_tag_notes(PUBTAGID, TOK)
 
-  print(*link_not_published, sep = "\n")
-  print(*link_false, sep = "\n")
+  print(*link_not_published, sep="\n")
+  print(*link_false, sep="\n")
 
   print('done')
 

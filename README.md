@@ -3,11 +3,13 @@
 this repo contains two projects:
 
 1. tinoplystuff blog
-   - no thing speciall
+   - no thing speciall, go to <https://tinoplaystuff.github.io> if you want to 
+     read my blog
 2. joplin to jekyll post ecporter
-   - a python script to export all notes in joplin with a specific tag to 
-     jekyll, a blog system which can 
-     
+   - a python script to export all notes in joplin with a specific tag so that 
+     one can directly convert ones notes to a blog (jekyll) hosted on githhub 
+   - the documentation will be written with joplin and will be send to 
+     <https://tinoplaystuff.github.io/>
 
-I am currently use joplin to manage all my writings, please see the follow ing 
-links for newer and more complete introduction. 
+
+
