@@ -4,8 +4,8 @@ import datetime, re
 
 # <- setting
 # token from joplin -> Tool -> Options -> Web Clipper -> Authorization token:
-TOK = "4ccabec736a39dcfeac27efc8ab253ca4760c7aeb2bd468b5932e2e2c181b08557a507081f88fb0a80efb66650fc09b9fde7c4202f437cf73b79c18c55e0456a"
-# TOK = "4444503f811297abb7e0819eb3b32c33a3c7542a50325233ea6eff9889b4315bc437621aca8b90221b553d3bb0358a4d6e4b3225849d483c87394d18df38bf1e"
+# TOK = "4ccabec736a39dcfeac27efc8ab253ca4760c7aeb2bd468b5932e2e2c181b08557a507081f88fb0a80efb66650fc09b9fde7c4202f437cf73b79c18c55e0456a"
+TOK = "4444503f811297abb7e0819eb3b32c33a3c7542a50325233ea6eff9889b4315bc437621aca8b90221b553d3bb0358a4d6e4b3225849d483c87394d18df38bf1e"
 # TOK = "3832bfdfe1677749190eb8a910340e613035b1a4325d4d9ecca0d29b3f9fee1c561689430ff0fa338b7e197c45680afc87407c061ce91624fdce945a1f7227d7"
 
 PUBTAG = "published"  # note with this tag will be extracted
@@ -269,6 +269,12 @@ def main():
 
   print(*link_not_published, sep="\n")
   print(*link_false, sep="\n")
+  with open(r'./run.py.log', 'w', encoding="utf-8") as fp:
+    fp.write('## linked notes have not tag: ' + PUBTAG +': \n\n- ')
+    fp.write('\n- '.join(link_not_published))
+    fp.write('\n\n\n')
+    fp.write('## not existed links: \n\n- ')
+    fp.write('\n- '.join(link_false))
 
   print('done')
 
