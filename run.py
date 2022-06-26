@@ -20,7 +20,7 @@ INLINE_LINK_RE = re.compile(r'\[.*\]\(\:.*\)')
 # <- command string
 GET_TAG = "curl " + URL + "tags/"
 GET_NOTE = "curl " + URL + "notes/"
-TOK = "token=" + TOK
+# TOK = "token=" + TOK
 # -> command string
 
 ID_DEST = {}  # mapping of id (markdown, resource) to dest

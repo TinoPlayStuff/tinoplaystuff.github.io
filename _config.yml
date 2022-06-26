@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "TinoPlayStuff"
 title_separator          : "-"
 #subtitle                 : # site tagline that appears below site title in masthead
-subtitle                 : "Tino's play ground"
+subtitle                 : "Record something I've played with"
 name                     : "Tino Chang"
 description              : "Tino's note & playground"
 url                      : "https://tinoplaystuff.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -107,13 +107,13 @@ analytics:
 author:
   name             : "Tino Chang"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
+  bio              : "3C 成癮，machine learning 工程師，兩個孩子的爸，有機會會旅遊，有時間會跳(阿根廷)tango。  "
   location         : "Somewhere"
-  email            :
+  email            : "aaa@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
+      url: "mailto:your.name@email.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
