@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 import os, subprocess, json
-import datetime, re
+import datetime, re, shutil
 
 # <- setting
-# token from joplin -> Tool -> Options -> Web Clipper -> Authorization token:
-# TOK = ""
-
-
+TOK_FILE = "run.py.tok"  # file contains joplin token
 PUBTAG = "published"  # note with this tag will be extracted
 N_FDR = "./_posts"  # where to put the exported posts
 R_FDR = "./_resources"  # where to put resource files (.jpg, .png, ...)
@@ -16,6 +13,9 @@ URL = "http://localhost:41184/"
 #. regular expression for finding markdown link (need to be improved)
 # INLINE_LINK_RE = re.compile(r'\[([^\]]+)\]\(:([^)]+)\)')
 INLINE_LINK_RE = re.compile(r'\[.*\]\(\:.*\)')
+
+#. regular expression for remove [TOC] lines
+RM_TOC_RE = re.compile("\n\[toc\]\n|\n\[toc\] \n", re.IGNORECASE)
 
 # <- command string
 GET_TAG = "curl " + URL + "tags/"
@@ -89,6 +89,7 @@ def travel_tag_notes(tag_id, TOK, n=1):
         subprocess.Popen(GET_NOTE + note_id + "/tags?" + TOK + "&limit=100",
                          stdout=subprocess.PIPE).stdout.read())
     #^ a note shouldn't have more than 100 tags ...
+
     note['tags'] = [ii['title'] for ii in note_tags['items']]
     note['tags'].remove(PUBTAG)
     tag_line = "tags: [" + ", ".join(x for x in note['tags']) + "]"
@@ -104,7 +105,13 @@ def travel_tag_notes(tag_id, TOK, n=1):
     last_updated_line = "last_updated: " + datetime.datetime.fromtimestamp(
         int(note['user_updated_time']) /
         1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
-    #^ for jekyll sort post
+    #^ for jekyll sort post (may be omitted if set the folowing "date" tag)
+    date_line = "date: " + datetime.datetime.fromtimestamp(
+        int(note['user_updated_time']) /
+        1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
+    #^ for jekyll's pagination to sort post
+    # https://talk.jekyllrb.com/t/sort-posts-by-updated-and-published-date/6789/2
+    # https://cynthiachuang.github.io/Show-the-Last-Modified-Time-in-Jekyll-NextT-Theme/
 
     # convert resource link
     #! this must be done before convert markdown link
@@ -159,10 +166,14 @@ def travel_tag_notes(tag_id, TOK, n=1):
 
       doc = doc.replace(link, new_link)
 
+    # remove [toc] line
+    doc = RM_TOC_RE.sub("\n", doc)
+
     yaml_head = "---\n"
     yaml_head += tag_line + "\n"
     yaml_head += last_modified_line + "\n"
     yaml_head += last_updated_line + "\n"
+    yaml_head += date_line + "\n"
     yaml_head += "---\n"
 
     f = open(note_dest, "w", encoding="utf-8")
@@ -245,8 +256,8 @@ def travel_tag_notes_pre(tag_id, TOK, n=1):
 
 def main():
 
-  with open('run.py.tok') as f:
-    TOK = "token="+f.read().strip()
+  with open(TOK_FILE) as f:
+    TOK = "token=" + f.read().strip()
 
   # 1. get publication tag's id
   PUBTAGID = get_tag_id(PUBTAG, TOK, n=1)
@@ -263,6 +274,11 @@ def main():
     print("\n\n\nsome thing wrong: maybe duplicate id\n\n")
 
   # 3. create output folders
+  # shutil.rmtree(N_FDR+"bak", )
+  # shutil.move(N_FDR, N_FDR+"bak")
+  # shutil.rmtree(R_FDR+"bak")
+  # shutil.move(R_FDR, R_FDR+"bak")
+
   os.makedirs(N_FDR, exist_ok=True)
   os.makedirs(R_FDR, exist_ok=True)
 
@@ -272,7 +288,7 @@ def main():
   print(*link_not_published, sep="\n")
   print(*link_false, sep="\n")
   with open(r'./run.py.log', 'w', encoding="utf-8") as fp:
-    fp.write('## linked notes have not tag: ' + PUBTAG +': \n\n- ')
+    fp.write('## linked notes have not tag: ' + PUBTAG + ': \n\n- ')
     fp.write('\n- '.join(link_not_published))
     fp.write('\n\n\n')
     fp.write('## not existed links: \n\n- ')
