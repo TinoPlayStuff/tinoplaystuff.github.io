@@ -29,4 +29,7 @@ _asset_bundler_cache
 _site
 /run.py.tok
 /run.py.log
+<<<<<<< HEAD
 /.vscode
+=======
+>>>>>>> cbd0df1e3ea3262d9882327c281525c7395f024b

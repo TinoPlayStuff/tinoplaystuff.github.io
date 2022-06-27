@@ -1,0 +1,7 @@
+{% if site.liker_id %}
+<iframe
+  style="width: 100%; max-width: 485px; height: 200px; margin: auto; overflow: hidden; display: block;" 
+  frameBorder="0"
+  src="https://button.like.co/in/embed/{{site.liker_id}}/button?referrer={{ page.url | absolute_url | cgi_escape }}">
+</iframe>
+{% endif %}
