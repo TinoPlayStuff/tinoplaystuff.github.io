@@ -101,11 +101,17 @@ def travel_tag_notes(tag_id, TOK, n=1):
     last_modified_line = "last_modified_at: " + datetime.datetime.fromtimestamp(
         int(note['user_updated_time']) /
         1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
-    #^ for minimal mistake theme show information
+    #^ for minimal mistake theme to do something (may be omitted)
+
     last_updated_line = "last_updated: " + datetime.datetime.fromtimestamp(
         int(note['user_updated_time']) /
         1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
     #^ for jekyll sort post (may be omitted if set the folowing "date" tag)
+
+    created_date_line = "created_date: " + datetime.datetime.fromtimestamp(
+      int(note['user_created_time']) /
+        1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
+
     date_line = "date: " + datetime.datetime.fromtimestamp(
         int(note['user_updated_time']) /
         1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
@@ -172,7 +178,8 @@ def travel_tag_notes(tag_id, TOK, n=1):
     yaml_head = "---\n"
     yaml_head += tag_line + "\n"
     yaml_head += last_modified_line + "\n"
-    yaml_head += last_updated_line + "\n"
+    # yaml_head += last_updated_line + "\n"
+    yaml_head += created_date_line + "\n"
     yaml_head += date_line + "\n"
     yaml_head += "---\n"
 
