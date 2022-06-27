@@ -104,7 +104,13 @@ def travel_tag_notes(tag_id, TOK, n=1):
     last_updated_line = "last_updated: " + datetime.datetime.fromtimestamp(
         int(note['user_updated_time']) /
         1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
-    #^ for jekyll sort post
+    #^ for jekyll sort post (may be omitted if set the folowing "date" tag)
+    date_line = "date: " + datetime.datetime.fromtimestamp(
+        int(note['user_updated_time']) /
+        1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
+    #^ for jekyll's pagination to sort post
+    # https://talk.jekyllrb.com/t/sort-posts-by-updated-and-published-date/6789/2
+    # https://cynthiachuang.github.io/Show-the-Last-Modified-Time-in-Jekyll-NextT-Theme/
 
     # convert resource link
     #! this must be done before convert markdown link
