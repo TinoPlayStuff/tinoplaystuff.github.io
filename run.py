@@ -17,6 +17,9 @@ INLINE_LINK_RE = re.compile(r'\[.*\]\(\:.*\)')
 #. regular expression for remove [TOC] lines
 RM_TOC_RE = re.compile("\n\[toc\]\n|\n\[toc\] \n", re.IGNORECASE)
 
+#. regular expression for checking sub-sections
+CHK_SECTION_RE = re.compile(r'\n###*\s.')
+
 # <- command string
 GET_TAG = "curl " + URL + "tags/"
 GET_NOTE = "curl " + URL + "notes/"
@@ -175,12 +178,18 @@ def travel_tag_notes(tag_id, TOK, n=1):
     # remove [toc] line
     doc = RM_TOC_RE.sub("\n", doc)
 
+    kk = CHK_SECTION_RE.findall(doc)
+
     yaml_head = "---\n"
     yaml_head += tag_line + "\n"
     yaml_head += last_modified_line + "\n"
     # yaml_head += last_updated_line + "\n"
     yaml_head += created_date_line + "\n"
     yaml_head += date_line + "\n"
+
+    if len(CHK_SECTION_RE.findall(doc)) == 0:
+      yaml_head += "toc: false\n"
+
     yaml_head += "---\n"
 
     f = open(note_dest, "w", encoding="utf-8")
