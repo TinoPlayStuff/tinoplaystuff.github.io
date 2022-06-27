@@ -274,11 +274,10 @@ def main():
     print("\n\n\nsome thing wrong: maybe duplicate id\n\n")
 
   # 3. create output folders
-  # shutil.rmtree(N_FDR+"bak", )
-  # shutil.move(N_FDR, N_FDR+"bak")
-  # shutil.rmtree(R_FDR+"bak")
-  # shutil.move(R_FDR, R_FDR+"bak")
-
+  shutil.rmtree(N_FDR+"bak", True)
+  shutil.move(N_FDR, N_FDR+"bak")
+  shutil.rmtree(R_FDR+"bak", True)
+  shutil.move(R_FDR, R_FDR+"bak")
   os.makedirs(N_FDR, exist_ok=True)
   os.makedirs(R_FDR, exist_ok=True)
 

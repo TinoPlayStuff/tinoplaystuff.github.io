@@ -304,3 +304,8 @@ titles_from_headings:
   strip_title: true
   collections: true
 
+
+# Enter your Liker ID to enable LikeButton
+liker_id: tino926
+
+
