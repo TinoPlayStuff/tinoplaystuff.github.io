@@ -1,6 +1,12 @@
 #!/usr/bin/python3
 import os, subprocess, json
-import datetime, re, shutil
+import datetime, re, shutil, uuid
+
+#!!! caution
+# this script will delete four folders:
+#   if your set N_FDR and R_FDR as follows, this script will delete all contents
+#   in the following four folders:
+#   "./_posts", "./_resources", "./_postsbak", and "./_resourcesbak"
 
 # <- setting
 TOK_FILE = "run.py.tok"  # file contains joplin token
@@ -15,10 +21,13 @@ URL = "http://localhost:41184/"
 INLINE_LINK_RE = re.compile(r'\[.*\]\(\:.*\)')
 
 #. regular expression for remove [TOC] lines
-RM_TOC_RE = re.compile("\n\[toc\]\n|\n\[toc\] \n", re.IGNORECASE)
+RM_TOC_RE = re.compile(r"^\[toc\] *\n", flags=re.MULTILINE | re.IGNORECASE)
 
 #. regular expression for checking sub-sections
-CHK_SECTION_RE = re.compile(r'\n###*\s.')
+CHK_SECTION_RE = re.compile(r"^###* \S+.*", flags=re.MULTILINE)
+
+#. ^jtid:\S+
+FIND_JTID_RE = re.compile(r'^jtid:\S+', flags=re.MULTILINE | re.IGNORECASE)
 
 # <- command string
 GET_TAG = "curl " + URL + "tags/"
@@ -28,6 +37,7 @@ GET_NOTE = "curl " + URL + "notes/"
 
 ID_DEST = {}  # mapping of id (markdown, resource) to dest
 DEST_ID = {}  # reverse mapping from dest to id
+ID_JTID = {}
 
 link_not_published = []  # record of linked but not published notes
 link_false = []  # reocrd of links pointing to nonexisting notes
@@ -112,7 +122,7 @@ def travel_tag_notes(tag_id, TOK, n=1):
     #^ for jekyll sort post (may be omitted if set the folowing "date" tag)
 
     created_date_line = "created_date: " + datetime.datetime.fromtimestamp(
-      int(note['user_created_time']) /
+        int(note['user_created_time']) /
         1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
 
     date_line = "date: " + datetime.datetime.fromtimestamp(
@@ -175,10 +185,20 @@ def travel_tag_notes(tag_id, TOK, n=1):
 
       doc = doc.replace(link, new_link)
 
+    # deal jtid:
+    dd = FIND_JTID_RE.findall(doc)
+    if (len(dd) != 1):
+      print('\n\n\njtid problem, not unique or not found\npost title: ' +
+            note["title"] + '\nsuggest jtid: ' + ID_JTID[note_id] + '\n')
+      input("press any key")
+    else:
+      if (dd[0] != ID_JTID[note_id]):
+        print('\n\n\njtid problem, seems id changed\npost title: ' +
+              note["title"] + '\nnew jtid: ' + ID_JTID[note_id] + '\n')
+        input("press any key")
+
     # remove [toc] line
     doc = RM_TOC_RE.sub("\n", doc)
-
-    kk = CHK_SECTION_RE.findall(doc)
 
     yaml_head = "---\n"
     yaml_head += tag_line + "\n"
@@ -251,8 +271,23 @@ def travel_tag_notes_pre(tag_id, TOK, n=1):
     #. dest
     time_str = datetime.datetime.fromtimestamp(
         int(note['user_created_time']) / 1000).strftime('%Y-%m-%d')
-    new_fname = time_str + '-' + str(note['user_created_time']) + ".md"
+    # new_fname = time_str + '-' + str(note['user_created_time']) + ".md"
+    # note_dest = os.path.join(N_FDR, new_fname)
+
+    #. get jtid from note, if no, generate on
+    dd = FIND_JTID_RE.findall(note['body'])
+    if (len(dd) == 0):
+      new_fname = time_str + '-' + str(uuid.uuid4()) + '.md'
+    else:
+      dd = dd[-1]
+      if dd[5:15] != time_str:
+        input("current post time not match jtid: " + dd + "\nnote title: " +
+              note['title'] + '\npress any key to continue')
+
+      new_fname = dd[5:] + '.md'
     note_dest = os.path.join(N_FDR, new_fname)
+
+    ID_JTID[note_id] = "jtid:" + new_fname[0:-3]
 
     #. note_id-dest dictionary creation
     o = check_add_dict(note_id, note_dest)
@@ -272,8 +307,12 @@ def travel_tag_notes_pre(tag_id, TOK, n=1):
 
 def main():
 
-  with open(TOK_FILE) as f:
-    TOK = "token=" + f.read().strip()
+  try:
+    with open(TOK_FILE) as f:
+      TOK = "token=" + f.read().strip()
+  except:
+    print('\nFAILED: check your "TOK_FILE" setting\n')
+    return
 
   # 1. get publication tag's id
   PUBTAGID = get_tag_id(PUBTAG, TOK, n=1)
@@ -284,24 +323,26 @@ def main():
     print("\n\n\nno note has tag: ", PUBTAG)
     return
 
-  # 2. see all notes with pubtag, generate id-dest dictionary
+  # 2. create output folders
+  if os.path.exists(N_FDR):
+    shutil.rmtree(N_FDR + "bak", True)
+    shutil.move(N_FDR, N_FDR + "bak")
+  if os.path.exists(R_FDR):
+    shutil.rmtree(R_FDR + "bak", True)
+    shutil.move(R_FDR, R_FDR + "bak")
+  os.makedirs(N_FDR, exist_ok=True)
+  os.makedirs(R_FDR, exist_ok=True)
+
+  # 3. see all notes with pubtag, generate id-dest dictionary
   ret = travel_tag_notes_pre(PUBTAGID, TOK)
   if not ret:
     print("\n\n\nsome thing wrong: maybe duplicate id\n\n")
 
-  # 3. create output folders
-  shutil.rmtree(N_FDR+"bak", True)
-  shutil.move(N_FDR, N_FDR+"bak")
-  shutil.rmtree(R_FDR+"bak", True)
-  shutil.move(R_FDR, R_FDR+"bak")
-  os.makedirs(N_FDR, exist_ok=True)
-  os.makedirs(R_FDR, exist_ok=True)
-
   # 4. extract notes and resources
   travel_tag_notes(PUBTAGID, TOK)
 
-  print(*link_not_published, sep="\n")
-  print(*link_false, sep="\n")
+  # 5. report unusual links
+  print("\n", *link_not_published, "", *link_false, sep="\n", end="\n\n\n")
   with open(r'./run.py.log', 'w', encoding="utf-8") as fp:
     fp.write('## linked notes have not tag: ' + PUBTAG + ': \n\n- ')
     fp.write('\n- '.join(link_not_published))
