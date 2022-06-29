@@ -8,12 +8,12 @@ layout: archive
 
 {% if paginator %}
   <!-- [T] to sort post according to update date -->
-  <!-- {% assign posts = paginator.posts %} -->
-  {% assign posts = paginator.posts | sort: 'last_updated' | reverse %}
+  {% assign posts = paginator.posts %}
+  {% assign posts = paginator.posts | sort: 'date' | reverse %}
 {% else %}
   <!-- [T] to sort post according to update date -->
-  <!-- {% assign posts = site.posts %} -->
-  {% assign posts = site.posts | sort: 'last_updated' | reverse %}
+  {% assign posts = site.posts %}
+  {% assign posts = site.posts | sort: 'date' | reverse %}
 {% endif %}
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}

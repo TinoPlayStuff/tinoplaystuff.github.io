@@ -27,5 +27,11 @@ codekit-config.json
 .sass-cache
 _asset_bundler_cache
 _site
+
+# run.py
 run.py.tok
 run.py.log
+.vscode
+_postsbak
+_resourcesbak
+joppy/__pycache__
