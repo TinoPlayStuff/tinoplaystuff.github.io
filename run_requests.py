@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import os, subprocess, json
-import datetime, re, shutil, uuid
+import datetime, re, shutil, uuid, requests, pycurl
+from joppy.api import Api
 
 #!!! caution
 # this script will delete four folders:
@@ -42,22 +43,37 @@ ID_JTID = {}
 link_not_published = []  # record of linked but not published notes
 link_false = []  # reocrd of links pointing to nonexisting notes
 
+re_sess = requests.Session()
+japi = Api("dummy")
 
 # find the id of the specified id
 def get_tag_id(_tag, TOK, n=1):
   # get all tags from joplin
-  tags = json.loads(
-      subprocess.Popen("curl -s " + URL + "search?type=tag&query=" + _tag +
-                       "&" + TOK,
-                       stdout=subprocess.PIPE).stdout.read())
-  if 'error' in tags.keys():
-    return 'error'
 
-  if len(tags['items']) == 0:
+  # tags = json.loads(
+  #     subprocess.Popen(GET_TAG + "?" + TOK + "&page=" + str(n),
+  #                     stdout=subprocess.PIPE).stdout.read())
+
+  # if 'error' in tags.keys():
+  #   return 'error'
+
+  # # compare tags' title
+  # for i in tags['items']:
+  #   if i['title'] == _tag:
+  #     return i['id']
+
+
+  tags = japi.get_all_tags()
+  for i in tags:
+    if i['title'] == _tag:
+      return i['id']
+  return None
+
+  # continue find in next page or return no (not found)
+  if tags['has_more']:
+    return get_tag_id(_tag, TOK, n + 1)
+  else:
     return None
-
-  return tags['items'][0]['id']
-
 
 
 # check id and destination, add them into dictionaries
@@ -83,26 +99,31 @@ def check_add_dict(id, dest):
 
 def travel_tag_notes(tag_id, TOK, n=1):
   #. get all notes with PUBTAG
-  notes = json.loads(
-      subprocess.Popen(
-          GET_TAG + tag_id + "/notes?" + TOK +
-          "&fields=id,parent_id,title,user_created_time,user_updated_time,body"
-          + "&limit=100&page=" + str(n),
-          stdout=subprocess.PIPE).stdout.read())
+  # notes = json.loads(
+  #     subprocess.Popen(
+  #         GET_TAG + tag_id + "/notes?" + TOK +
+  #         "&fields=id,parent_id,title,user_created_time,user_updated_time,body"
+  #         + "&limit=100&page=" + str(n),
+  #         stdout=subprocess.PIPE).stdout.read())
 
+  notes = japi.get_all_notes(tag_id=tag_id, fields='id,parent_id,title,user_created_time,user_updated_time,body')
+  
   #. for each note
-  for note in notes['items']:
+  # for note in notes['items']:
+  for note in notes:
     note_id = note['id']
 
-    note_tags = json.loads(
-        subprocess.Popen(GET_NOTE + note_id + "/tags?" + TOK + "&limit=100",
-                         stdout=subprocess.PIPE).stdout.read())
-    #^ a note shouldn't have more than 100 tags ...
+    # note_tags = json.loads(
+    #     subprocess.Popen(GET_NOTE + note_id + "/tags?" + TOK + "&limit=100",
+    #                      stdout=subprocess.PIPE).stdout.read())
+    # #^ a note shouldn't have more than 100 tags ...
+    
+    # note['tags'] = [ii['title'] for ii in note_tags['items']]
 
-    note['tags'] = [ii['title'] for ii in note_tags['items']]
+    res = japi.get_all_tags(note_id=note_id)
+    note['tags'] = [ii['title'] for ii in res]
+
     note['tags'].remove(PUBTAG)
-    if PUBTAG + '_dev' in note['tags']: note['tags'].remove(PUBTAG + '_dev')
-
     tag_line = "tags: [" + ", ".join(x for x in note['tags']) + "]"
 
     note_dest = ID_DEST[note_id]
@@ -137,12 +158,16 @@ def travel_tag_notes(tag_id, TOK, n=1):
     #  why distinguish resource and markdown link?
     #    for resource, we only copy it
     #    for markdown, we need to generate it
-    res = json.loads(
-        subprocess.Popen(GET_NOTE + note_id + "/resources?" + TOK +
-                         "&fields=id,file_extension&limit=100",
-                         stdout=subprocess.PIPE).stdout.read())
-    #^ currently, only convert 100 resources
-    for i in res['items']:
+    # res = json.loads(
+    #     subprocess.Popen(GET_NOTE + note_id + "/resources?" + TOK +
+    #                      "&fields=id,file_extension&limit=100",
+    #                      stdout=subprocess.PIPE).stdout.read())
+    # #^ currently, only convert 100 resources
+
+    res = japi.get_all_resources(note_id=note_id, fields='id,file_extension')
+    
+    # for i in res['items']:
+    for i in res:
       id = i['id']
       ori_str = ':/' + id
       res_dest = ID_DEST[id]
@@ -184,22 +209,16 @@ def travel_tag_notes(tag_id, TOK, n=1):
       doc = doc.replace(link, new_link)
 
     # deal jtid:
-    dd = FIND_JTID_RE.findall(doc)
-    if (len(dd) != 1):
-      print('\n\n\njtid problem, not unique or not found\npost title: ' +
-            note["title"] + '\nsuggest jtid: ' + ID_JTID[note_id] + '\n')
-      input("press any key")
-    else:
-      if (dd[-1] != ID_JTID[note_id]):
-        print('\n\n\njtid problem, seems id changed\npost title: ' +
-              note["title"] + '\nnew jtid: ' + ID_JTID[note_id] + '\n')
-        input("press any key")
-    # doc = doc.replace(dd[-1], '<span style="color:LightGray">' + dd[-1] + '</span>')
-
-    # hide contents not for read
-    if doc.find('\n-- end --') != -1:
-      doc = doc.replace("-- end --", '<span style="color:LightGray">')
-      doc = doc+'</span>\n'
+    # dd = FIND_JTID_RE.findall(doc)
+    # if (len(dd) != 1):
+    #   print('\n\n\njtid problem, not unique or not found\npost title: ' +
+    #         note["title"] + '\nsuggest jtid: ' + ID_JTID[note_id] + '\n')
+    #   input("press any key")
+    # else:
+    #   if (dd[0] != ID_JTID[note_id]):
+    #     print('\n\n\njtid problem, seems id changed\npost title: ' +
+    #           note["title"] + '\nnew jtid: ' + ID_JTID[note_id] + '\n')
+    #     input("press any key")
 
     # remove [toc] line
     doc = RM_TOC_RE.sub("\n", doc)
@@ -220,6 +239,7 @@ def travel_tag_notes(tag_id, TOK, n=1):
     f.write(yaml_head)
     f.write(doc)
     f.close()
+  return True
 
   if notes['has_more']:
     return travel_tag_notes(tag_id, TOK, n + 1)
@@ -228,13 +248,16 @@ def travel_tag_notes(tag_id, TOK, n=1):
 
 
 def add_resource(note_id, TOK, n=1):
-  #. get resource list
-  res = json.loads(
-      subprocess.Popen(GET_NOTE + note_id + "/resources?" + TOK +
-                       "&fields=id,file_extension&limit=100",
-                       stdout=subprocess.PIPE).stdout.read())
+  # #. get resource list
+  # res = json.loads(
+  #     subprocess.Popen(GET_NOTE + note_id + "/resources?" + TOK +
+  #                      "&fields=id,file_extension&limit=100",
+  #                      stdout=subprocess.PIPE).stdout.read())
 
-  for i in res['items']:
+  res = japi.get_all_resources(note_id=note_id, fields='id,file_extension')
+
+  # for i in res['items']:
+  for i in res:
     #. get id
     id = i['id']
 
@@ -243,32 +266,40 @@ def add_resource(note_id, TOK, n=1):
     res_dest = os.path.join(R_FDR, new_fname)
 
     #. copy resource
-    subprocess.Popen("curl -s -o " + res_dest + " " + URL + "resources/" + id +
-                     "/file?" + TOK,
-                     stdout=subprocess.PIPE).stdout.read()
+    # subprocess.Popen("curl -o " + res_dest + " " + URL + "resources/" + id +
+    #                  "/file?" + TOK,
+    #                  stdout=subprocess.PIPE).stdout.read()
+    
+    with open(res_dest, "wb") as f:
+      f.write(japi.get_resource_file(id))
 
     #. id-dest dictionary creation
     o = check_add_dict(id, res_dest)
     if not o:
       return False
+  return True
 
-  if res['has_more']:
-    return add_resource(id, TOK, n + 1)
-  else:
-    return True
+  # if res['has_more']:
+  #   return add_resource(id, TOK, n + 1)
+  # else:
+  #   return True
 
 
 # generate id(note)-dest dictionary
 # dest is timebased
 def travel_tag_notes_pre(tag_id, TOK, n=1):
-  #. get notes with PUBID
-  notes = json.loads(
-      subprocess.Popen(
-          GET_TAG + tag_id + "/notes?" + TOK +
-          "&fields=id,parent_id,title,user_created_time,user_updated_time,body",
-          stdout=subprocess.PIPE).stdout.read())
+  # #. get notes with PUBID
+  # notes = json.loads(
+  #     subprocess.Popen(
+  #         GET_TAG + tag_id + "/notes?" + TOK +
+  #         "&fields=id,parent_id,title,user_created_time,user_updated_time,body",
+  #         stdout=subprocess.PIPE).stdout.read())
 
-  for note in notes['items']:
+  notes = japi.get_all_notes(tag_id=tag_id, fields='id,parent_id,title,user_created_time,user_updated_time,body')
+
+
+  # for note in notes['items']:
+  for note in notes:
     #. id
     note_id = note['id']
 
@@ -302,6 +333,7 @@ def travel_tag_notes_pre(tag_id, TOK, n=1):
     o = add_resource(note_id, TOK)
     if not o:
       return False
+  return True
 
   if notes['has_more']:
     return travel_tag_notes_pre(tag_id, TOK, n + 1)
@@ -313,7 +345,9 @@ def main():
 
   try:
     with open(TOK_FILE) as f:
-      TOK = "token=" + f.read().strip()
+      tokstr = f.read().strip()
+      TOK = "token=" + tokstr
+      japi.token = tokstr
   except:
     print('\nFAILED: check your "TOK_FILE" setting\n')
     return
