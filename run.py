@@ -192,10 +192,16 @@ def travel_tag_notes(tag_id, TOK, n=1):
             note["title"] + '\nsuggest jtid: ' + ID_JTID[note_id] + '\n')
       input("press any key")
     else:
-      if (dd[0] != ID_JTID[note_id]):
+      if (dd[-1] != ID_JTID[note_id]):
         print('\n\n\njtid problem, seems id changed\npost title: ' +
               note["title"] + '\nnew jtid: ' + ID_JTID[note_id] + '\n')
         input("press any key")
+    # doc = doc.replace(dd[-1], '<span style="color:LightGray">' + dd[-1] + '</span>')
+
+    # hide contents not for read
+    if doc.find('\n-- end --') != -1:
+      doc = doc.replace("-- end --", '<span style="color:LightGray">')
+      doc = doc+'</span>\n'
 
     # remove [toc] line
     doc = RM_TOC_RE.sub("\n", doc)
