@@ -27,5 +27,5 @@ codekit-config.json
 .sass-cache
 _asset_bundler_cache
 _site
-/run.py.tok
-/run.py.log
+run.py.tok
+run.py.log
