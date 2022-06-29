@@ -34,3 +34,4 @@ run.py.log
 .vscode
 _postsbak
 _resourcesbak
+joppy/__pycache__
