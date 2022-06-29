@@ -11,6 +11,7 @@ import datetime, re, shutil, uuid
 # <- setting
 TOK_FILE = "run.py.tok"  # file contains joplin token
 PUBTAG = "published"  # note with this tag will be extracted
+TAGHIDE = {"published", "publishedx"} # test tag
 N_FDR = "./_posts"  # where to put the exported posts
 R_FDR = "./_resources"  # where to put resource files (.jpg, .png, ...)
 URL = "http://localhost:41184/"
@@ -52,12 +53,12 @@ def get_tag_id(_tag, TOK, n=1):
                        stdout=subprocess.PIPE).stdout.read())
   if 'error' in tags.keys():
     return 'error'
+  tags = tags['items']
 
-  if len(tags['items']) == 0:
+  if len(tags) == 0:
     return None
 
-  return tags['items'][0]['id']
-
+  return tags[0]['id']
 
 
 # check id and destination, add them into dictionaries
@@ -99,9 +100,8 @@ def travel_tag_notes(tag_id, TOK, n=1):
                          stdout=subprocess.PIPE).stdout.read())
     #^ a note shouldn't have more than 100 tags ...
 
-    note['tags'] = [ii['title'] for ii in note_tags['items']]
-    note['tags'].remove(PUBTAG)
-    if PUBTAG + '_dev' in note['tags']: note['tags'].remove(PUBTAG + '_dev')
+    note['tags'] = {ii['title'] for ii in note_tags['items']}
+    note['tags'] = note['tags'] - TAGHIDE
 
     tag_line = "tags: [" + ", ".join(x for x in note['tags']) + "]"
 
@@ -198,8 +198,8 @@ def travel_tag_notes(tag_id, TOK, n=1):
 
     # hide contents not for read
     if doc.find('\n-- end --') != -1:
-      doc = doc.replace("-- end --", '<span style="color:LightGray">')
-      doc = doc+'</span>\n'
+      doc = doc.replace("-- end --", '<span style="color:LightGray">-- end --')
+      doc = doc + '</span>\n'
 
     # remove [toc] line
     doc = RM_TOC_RE.sub("\n", doc)

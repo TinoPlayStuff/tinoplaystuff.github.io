@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import os, subprocess, json
-import datetime, re, shutil, uuid, requests, pycurl
+import datetime, re, shutil, uuid, requests
 from joppy.api import Api
 
 #!!! caution
@@ -12,6 +12,7 @@ from joppy.api import Api
 # <- setting
 TOK_FILE = "run.py.tok"  # file contains joplin token
 PUBTAG = "published"  # note with this tag will be extracted
+TAGHIDE = {"published", "publishedx"} # test tag
 N_FDR = "./_posts"  # where to put the exported posts
 R_FDR = "./_resources"  # where to put resource files (.jpg, .png, ...)
 URL = "http://localhost:41184/"
@@ -48,32 +49,13 @@ japi = Api("dummy")
 
 # find the id of the specified id
 def get_tag_id(_tag, TOK, n=1):
-  # get all tags from joplin
 
-  # tags = json.loads(
-  #     subprocess.Popen(GET_TAG + "?" + TOK + "&page=" + str(n),
-  #                     stdout=subprocess.PIPE).stdout.read())
+  tags = japi.search_all(query=_tag, type='tag')
 
-  # if 'error' in tags.keys():
-  #   return 'error'
-
-  # # compare tags' title
-  # for i in tags['items']:
-  #   if i['title'] == _tag:
-  #     return i['id']
-
-
-  tags = japi.get_all_tags()
-  for i in tags:
-    if i['title'] == _tag:
-      return i['id']
-  return None
-
-  # continue find in next page or return no (not found)
-  if tags['has_more']:
-    return get_tag_id(_tag, TOK, n + 1)
-  else:
+  if len(tags) == 0:
     return None
+
+  return tags[0]['id']
 
 
 # check id and destination, add them into dictionaries
@@ -219,6 +201,11 @@ def travel_tag_notes(tag_id, TOK, n=1):
     #     print('\n\n\njtid problem, seems id changed\npost title: ' +
     #           note["title"] + '\nnew jtid: ' + ID_JTID[note_id] + '\n')
     #     input("press any key")
+
+    # hide contents not for read
+    if doc.find('\n-- end --') != -1:
+      doc = doc.replace("-- end --", '<span style="color:LightGray">-- end --')
+      doc = doc + '</span>\n'
 
     # remove [toc] line
     doc = RM_TOC_RE.sub("\n", doc)
