@@ -1,5 +1,8 @@
 # tinoplaystuff blog with joplin exporter
 
+In thie repo, a modified joppy is included. Please see <https://github.com/marph91> for more information.
+I will deal with the LICENSE thing later ... (I need to do some study)
+
 this repo contains two projects:
 
 1. tinoplystuff blog
