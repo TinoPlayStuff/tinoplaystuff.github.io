@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import os, subprocess, json
-import datetime, re, shutil, uuid
+import datetime, re, shutil, uuid, stat
 
 #!!! caution
 # this script will delete four folders:
@@ -10,11 +10,12 @@ import datetime, re, shutil, uuid
 
 # <- setting
 TOK_FILE = "run.py.tok"  # file contains joplin token
-PUBTAG = "published"  # note with this tag will be extracted
-TAGHIDE = {"published", "publishedx"} # test tag
+PUBTAG = "publishedev"  # note with this tag will be extracted
+TAGHIDE = {"published", "publishedx", "publishdev"}  # test tag
 N_FDR = "./_posts"  # where to put the exported posts
 R_FDR = "./_resources"  # where to put resource files (.jpg, .png, ...)
 URL = "http://localhost:41184/"
+JOPRFDR = "D:/greenware/joplin/joplinprofile/resources/"
 # -> setting
 
 #. regular expression for finding markdown link (need to be improved)
@@ -46,7 +47,7 @@ link_false = []  # reocrd of links pointing to nonexisting notes
 
 # find the id of the specified id
 def get_tag_id(_tag, TOK, n=1):
-  # get all tags from joplin
+
   tags = json.loads(
       subprocess.Popen("curl -s " + URL + "search?type=tag&query=" + _tag +
                        "&" + TOK,
@@ -66,20 +67,20 @@ def check_add_dict(id, dest):
   # check if id-dest exists, if conflict to dicts
   if id in ID_DEST.keys():
     if ID_DEST[id] == dest:
-      return True
+      return 0
     else:
-      return False
+      return -1
   if dest in DEST_ID.keys():
     if DEST_ID[dest] == id:
-      return True
+      return 0
     else:
-      return False
+      return -1
 
   # add id-dest pair
   ID_DEST[id] = dest
   DEST_ID[dest] = id
 
-  return True
+  return 1
 
 
 def travel_tag_notes(tag_id, TOK, n=1):
@@ -154,7 +155,11 @@ def travel_tag_notes(tag_id, TOK, n=1):
     in_links = INLINE_LINK_RE.findall(doc)
     for link in in_links:
       s = link.rfind("/")
-      link_id = link[s + 1:-1]
+      e = link.rfind("#")
+      if e < s:
+        link_id = link[s + 1:-1]
+      else:
+        link_id = link[s + 1:e]
 
       # deal if the link is not published or invalid
       if not link_id in ID_DEST.keys():
@@ -182,19 +187,6 @@ def travel_tag_notes(tag_id, TOK, n=1):
       new_link = link[0:s - 1] + new_link_url + ')'
 
       doc = doc.replace(link, new_link)
-
-    # deal jtid:
-    # dd = FIND_JTID_RE.findall(doc)
-    # if (len(dd) != 1):
-    #   print('\n\n\njtid problem, not unique or not found\npost title: ' +
-    #         note["title"] + '\nsuggest jtid: ' + ID_JTID[note_id] + '\n')
-    #   input("press any key")
-    # else:
-    #   if (dd[-1] != ID_JTID[note_id]):
-    #     print('\n\n\njtid problem, seems id changed\npost title: ' +
-    #           note["title"] + '\nnew jtid: ' + ID_JTID[note_id] + '\n')
-    #     input("press any key")
-    # # doc = doc.replace(dd[-1], '<span style="color:LightGray">' + dd[-1] + '</span>')
 
     # hide contents not for read
     if doc.find('\n-- end --') != -1:
@@ -242,15 +234,36 @@ def add_resource(note_id, TOK, n=1):
     new_fname = id + '.' + i['file_extension']
     res_dest = os.path.join(R_FDR, new_fname)
 
-    #. copy resource
-    subprocess.Popen("curl -s -o " + res_dest + " " + URL + "resources/" + id +
-                     "/file?" + TOK,
-                     stdout=subprocess.PIPE).stdout.read()
+    # #. copy resource
+    # # subprocess.Popen("curl -s -o " + res_dest + " " + URL + "resources/" + id +
+    # #                  "/file?" + TOK,
+    # #                  stdout=subprocess.PIPE).stdout.read()
+    # if os.path.exists(res_dest):
+    #   # subprocess.run("curl -s -z -o " + res_dest + " " + URL + "resources/" + id +
+    #   #                "/file?" + TOK)
+    #   # subprocess.Popen("curl -s -z -o " + res_dest + " " + URL + "resources/" +
+    #   #                  id + "/file?" + TOK,
+    #   #                  stdout=subprocess.PIPE).stdout.read()
+    #   pass
+    # else:
+    #   # subprocess.Popen("curl -s -o " + res_dest + " " + URL + "resources/" +
+    #   #                  id + "/file?" + TOK,
+    #   #                  stdout=subprocess.PIPE).stdout.read()
+    #   shutil.copy2(JOPRFDR+new_fname, res_dest)
 
     #. id-dest dictionary creation
     o = check_add_dict(id, res_dest)
-    if not o:
+    if o == -1:
       return False
+
+    # a news resource, copy it
+    if o == 1:
+      srcfile = JOPRFDR + new_fname
+      if os.path.exists(res_dest):
+        if os.stat(srcfile).st_mtime - os.stat(res_dest).st_mtime > 1:
+          shutil.copy2(srcfile, res_dest)
+      else:
+        shutil.copy2(JOPRFDR + new_fname, res_dest)
 
   if res['has_more']:
     return add_resource(id, TOK, n + 1)
@@ -265,37 +278,38 @@ def travel_tag_notes_pre(tag_id, TOK, n=1):
   notes = json.loads(
       subprocess.Popen(
           GET_TAG + tag_id + "/notes?" + TOK +
-          "&fields=id,parent_id,title,user_created_time,user_updated_time,body",
+          "&fields=id,parent_id,title,user_created_time,user_updated_time,body&page="
+          + str(n),
           stdout=subprocess.PIPE).stdout.read())
 
   for note in notes['items']:
     #. id
     note_id = note['id']
+    print('\x1b[1K\r', note['title'], end='')
 
     #. dest
     time_str = datetime.datetime.fromtimestamp(
         int(note['user_created_time']) / 1000).strftime('%Y-%m-%d')
-    # new_fname = time_str + '-' + str(note['user_created_time']) + ".md"
-    # note_dest = os.path.join(N_FDR, new_fname)
 
     #. get jtid from note, if no, generate on
-    dd = FIND_JTID_RE.findall(note['body'])
-    if (len(dd) == 0):
-      new_fname = time_str + '-' + str(uuid.uuid4()) + '.md'
+    jtid = FIND_JTID_RE.findall(note['body'])
+    if len(jtid) != 0:
+      jtid = jtid[-1]
+      if jtid[5:15] != time_str:
+        input("current post time not match " + jtid + "\nnote title: " +
+              note['title'] + '\npress [enter] to continue')
+      new_fname = jtid[5:] + '.md'
     else:
-      dd = dd[-1]
-      if dd[5:15] != time_str:
-        input("current post time not match jtid: " + dd + "\nnote title: " +
-              note['title'] + '\npress any key to continue')
+      # new_fname = time_str + '-' + str(uuid.uuid4()) + '.md'
+      new_fname = time_str + '-' + str(note['user_created_time']) + ".md"
 
-      new_fname = dd[5:] + '.md'
     note_dest = os.path.join(N_FDR, new_fname)
 
     ID_JTID[note_id] = "jtid:" + new_fname[0:-3]
 
     #. note_id-dest dictionary creation
     o = check_add_dict(note_id, note_dest)
-    if not o:
+    if o == -1:
       return False
 
     #. also add resource-dest into dictionary
@@ -307,6 +321,12 @@ def travel_tag_notes_pre(tag_id, TOK, n=1):
     return travel_tag_notes_pre(tag_id, TOK, n + 1)
   else:
     return True
+
+
+def del_rw(action, name, exc):
+  if os.path.exists(name):
+    os.chmod(name, stat.S_IWRITE)
+    os.remove(name)
 
 
 def main():
@@ -332,7 +352,7 @@ def main():
     shutil.rmtree(N_FDR + "bak", True)
     shutil.move(N_FDR, N_FDR + "bak")
   if os.path.exists(R_FDR):
-    shutil.rmtree(R_FDR + "bak", True)
+    shutil.rmtree(R_FDR + "bak", onerror=del_rw)
     shutil.move(R_FDR, R_FDR + "bak")
   os.makedirs(N_FDR, exist_ok=True)
   os.makedirs(R_FDR, exist_ok=True)
@@ -358,6 +378,6 @@ def main():
 
 
 if __name__ == '__main__':
-  print(datetime.datetime.now().strftime('%H:%M:%S'))
+  s = datetime.datetime.now().strftime('%H:%M:%S')
   main()
-  print(datetime.datetime.now().strftime('%H:%M:%S'))
+  print(s, " -> ", datetime.datetime.now().strftime('%H:%M:%S'))

@@ -107,13 +107,13 @@ analytics:
 author:
   name             : "Tino Chang"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "3C 成癮，machine learning 工程師，兩個孩子的爸，有機會會旅遊，有時間會跳(阿根廷)tango。  "
-  location         : "Somewhere in the world"
-  email            : "aaa@gmail.com"
+  bio              : "3C 成癮，machine learning 工程師，兩個孩子的爸，有機會會旅遊，有時間會跳(阿根廷)tango。"
+  location         : "Somewhere ok enough"
+  # email            : "aaa@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:your.name@email.com"
+      # url: "mailto:your.name@email.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -128,7 +128,7 @@ author:
       # url: "https://github.com/"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://www.instagram.com/tinoplaystuff/"
 
 # Site Footer
 footer:

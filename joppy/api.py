@@ -100,6 +100,7 @@ class ApiBase:
         query_str = "&".join([f"{key}={val}" for key, val in query.items()])
 
         try:
+            # response: requests.models.Response = getattr(requests, method)(
             response: requests.models.Response = getattr(re_session, method)(
                 f"{self.url}{path}?{query_str}",
                 json=data,

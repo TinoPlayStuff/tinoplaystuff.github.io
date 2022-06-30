@@ -183,6 +183,7 @@
   @include breakpoint($large) {
     margin-top: 10px;
     margin-bottom: 20px;
+    margin-right: 2px; // add this so it won't be cut by scrollbar
   }
 }
 
@@ -253,6 +254,7 @@
 
   &.is--visible {
     display: block;
+    width: 80vw; // add this so in small screen, plurk still wider enough
   }
 
   @include breakpoint($large) {
