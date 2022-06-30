@@ -15,7 +15,8 @@ TAGHIDE = {"published", "publishedx", "publishdev"}  # test tag
 N_FDR = "./_posts"  # where to put the exported posts
 R_FDR = "./_resources"  # where to put resource files (.jpg, .png, ...)
 URL = "http://localhost:41184/"
-JOPRFDR = "D:/greenware/joplin/joplinprofile/resources/"
+# JOPRFDR = "D:/greenware/joplin/joplinprofile/resources/"
+JOPRFDR = "C:/_Greenware/joplin/joplinprofile/resources/"
 # -> setting
 
 #. regular expression for finding markdown link (need to be improved)
