@@ -243,7 +243,7 @@ def add_resource(note_id, TOK, n=1):
 
     #. get dest
     new_fname = id + '.' + i['file_extension']
-    res_dest = os.path.join(R_FDR, id[0], new_fname)
+    res_dest = os.path.join(R_FDR, id[-2:], new_fname)
 
     # #. copy resource
     # # subprocess.Popen("curl -s -o " + res_dest + " " + URL + "resources/" + id +
