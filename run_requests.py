@@ -12,13 +12,14 @@ from pathlib import Path
 # <- setting
 TOK_FILE = "run.py.tok"  # file contains joplin token
 PUBTAG = "publishedev"  # note with this tag will be extracted
-TAGHIDE = {"published", "publishedx", "publishdev"}  # test tag
+TAGHIDE = {"published", "publishedx", "publishedev"}  # test tag
 N_FDR = "./_posts"  # where to put the exported posts
 R_FDR = "./_resources"  # where to put resource files (.jpg, .png, ...)
 URL = "http://localhost:41184/"
-JOPRFDR = "D:/greenware/joplin/joplinprofile/resources/"
-# JOPRFDR = "C:/_Greenware/joplin/joplinprofile/resources/"
+# JOPRFDR = "D:/greenware/joplin/joplinprofile/resources/"
+JOPRFDR = "C:/_Greenware/joplin/joplinprofile/resources/"
 IF_USED_JTID = True
+TAG_EXT = {'english_learning': {'英語學習'}}
 # -> setting
 
 #. regular expression for finding markdown link (need to be improved)
@@ -108,6 +109,10 @@ def travel_tag_notes(tag_id, TOK, n=1):
 
     note['tags'] = {ii['title'] for ii in note_tags['items']}
     note['tags'] = note['tags'] - TAGHIDE
+    
+    for k in TAG_EXT.keys():
+      if k in note['tags']:
+        note['tags'] = note['tags'] | TAG_EXT[k]
 
     tag_line = "tags: [" + ", ".join(x for x in note['tags']) + "]"
 
@@ -289,8 +294,8 @@ FIND_JTID_RE = re.compile(r'^jtid:\S+', flags=re.MULTILINE | re.IGNORECASE)
 
 def decide_dest(note, note_id):
   #. dest
-  time_str = timestamp_to_date(note['user_created_time'], '%Y-%m-%d')
-  YY_MM = time_str[0: 7]
+  time_str_ = timestamp_to_date(note['user_created_time'], '%Y-%m-%d') +"-"
+  YY_MM = time_str_[0:4]
 
   if IF_USED_JTID:
     #. get jtid from note
@@ -299,15 +304,15 @@ def decide_dest(note, note_id):
       jtid = jtid[-1]
 
       # if jtid not match note's time, show warning
-      if jtid[5:15] != time_str:
-        input("current post time not match " + jtid + "\nnote title: " +
-              note['title'] + '\npress [enter] to continue')
+      if jtid[5:16] != time_str_:
+        input("\ncurrent post time: " + time_str_ + " not match " + jtid +
+              "\nnote title: " + note['title'] + '\npress [enter] to continue')
       new_fname = jtid[5:] + '.md'
     else:
-      new_fname = time_str + '-' + str(uuid.uuid4()) + '.md'
+      new_fname = time_str_ + str(uuid.uuid4()) + '.md'
     ID_JTID[note_id] = "jtid:" + new_fname[0:-3]
   else:
-    new_fname = time_str + '-' + str(uuid.uuid4()) + '.md'
+    new_fname = time_str_ + str(uuid.uuid4()) + '.md'
     #. Q: why not use timestamp?
     #  A: because if the notes are created by "import",
     #     the timestamp may not be unique.

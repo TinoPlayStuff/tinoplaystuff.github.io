@@ -10,7 +10,9 @@ main:
     url: /year-archive/
   # - title: "Sample Collections"
   #   url: /collection-archive/
-  - title: "Sitemap"
-    url: /sitemap/
   - title: "Tags"
     url: /tags/
+  - title: "英語學習"
+    url: /tags/#english-learning
+  - title: "Sitemap"
+    url: /sitemap/
