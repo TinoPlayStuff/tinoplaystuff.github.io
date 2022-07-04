@@ -1,13 +1,26 @@
-#!/usr/bin/python3
+# run_requests.py
+"""
+!!! caution
+this script will **delete** four folders:
+  if your set "N_FDR" and "R_FDR" in the <-- setting --> block, this script will 
+  delete all contents in the following four folders:
+  "./_posts", "./_resources", "./_postsbak", and "./_resourcesbak"
+
+This script will export your joplin notes with relative resource files according
+to assigned tag. The exported files can be use by Jekyll.
+
+Usage:
+1. put this script in any folder 
+2. create a file and put your joplin authorization token 
+   (Tools -> Options -> Web Clipper -> Advanced options) in it.
+3. modify the the <-- setting --> block
+4. run this script
+5. find export result in ./_posts and ./_resources folders
+"""
+
 import os, subprocess, json
 import datetime, re, shutil, uuid, requests, stat
 from pathlib import Path
-
-#!!! caution
-# this script will delete four folders:
-#   if your set N_FDR and R_FDR as follows, this script will delete all contents
-#   in the following four folders:
-#   "./_posts", "./_resources", "./_postsbak", and "./_resourcesbak"
 
 # <- setting
 TOK_FILE = "run.py.tok"  # file contains joplin token
@@ -15,9 +28,9 @@ PUBTAG = "publishedev"  # note with this tag will be extracted
 TAGHIDE = {"published", "publishedx", "publishedev"}  # test tag
 N_FDR = "./_posts"  # where to put the exported posts
 R_FDR = "./_resources"  # where to put resource files (.jpg, .png, ...)
-URL = "http://localhost:41184/"
-# JOPRFDR = "D:/greenware/joplin/joplinprofile/resources/"
+URL = "http://localhost:41184/"  # joplin web clipper service
 JOPRFDR = "C:/_Greenware/joplin/joplinprofile/resources/"
+
 IF_USED_JTID = True
 TAG_EXT = {'english_learning': {'英語學習'}}
 # -> setting
@@ -89,6 +102,29 @@ def timestamp_to_date(timestamp, fmt):
   return datetime.datetime.fromtimestamp(int(timestamp) / 1000).strftime(fmt)
 
 
+date_time_fmt = '%Y-%m-%dT%H:%M:%S+08:00'
+
+
+def make_tag_line(note_id, tok):
+  note_tags = json.loads(
+      subprocess.Popen(GET_NOTE + note_id + "/tags?" + tok + "&limit=100",
+                       stdout=subprocess.PIPE).stdout.read())
+  #^ a note shouldn't have more than 100 tags ...
+
+  tag_set = {ii['title'] for ii in note_tags['items']}
+  tag_set = tag_set - TAGHIDE
+
+  #. add extended tags
+  for k in TAG_EXT.keys():
+    if k in tag_set:
+      tag_set = tag_set | TAG_EXT[k]
+
+  return "tags: [" + ", ".join(x for x in tag_set) + "]"
+
+
+def cvt_resource_link(note, note_id, tok):
+
+
 def travel_tag_notes(tag_id, TOK, n=1):
   #. get all notes with PUBTAG
   notes = json.loads(
@@ -102,41 +138,26 @@ def travel_tag_notes(tag_id, TOK, n=1):
   for note in notes['items']:
     note_id = note['id']
 
-    note_tags = json.loads(
-        subprocess.Popen(GET_NOTE + note_id + "/tags?" + TOK + "&limit=100",
-                         stdout=subprocess.PIPE).stdout.read())
-    #^ a note shouldn't have more than 100 tags ...
-
-    note['tags'] = {ii['title'] for ii in note_tags['items']}
-    note['tags'] = note['tags'] - TAGHIDE
-    
-    for k in TAG_EXT.keys():
-      if k in note['tags']:
-        note['tags'] = note['tags'] | TAG_EXT[k]
-
-    tag_line = "tags: [" + ", ".join(x for x in note['tags']) + "]"
+    tag_line = make_tag_line(note_id, TOK)
 
     note_dest = ID_DEST[note_id]
     doc = note['body']
 
     # last_modified_at: 2016-03-09T16:20:02-05:00
     last_modified_line = "last_modified_at: " + datetime.datetime.fromtimestamp(
-        int(note['user_updated_time']) /
-        1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
+        int(note['user_updated_time']) / 1000).strftime(date_time_fmt)
     #^ for minimal mistake theme to do something (may be omitted)
 
-    last_updated_line = "last_updated: " + datetime.datetime.fromtimestamp(
-        int(note['user_updated_time']) /
-        1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
-    #^ for jekyll sort post (may be omitted if set the folowing "date" tag)
+    # last_updated_line = "last_updated: " + datetime.datetime.fromtimestamp(
+    #     int(note['user_updated_time']) /
+    #     1000).strftime(date_time_fmt)
+    # #^ for jekyll sort post (may be omitted if set the folowing "date" tag)
 
     created_date_line = "created_date: " + datetime.datetime.fromtimestamp(
-        int(note['user_created_time']) /
-        1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
+        int(note['user_created_time']) / 1000).strftime(date_time_fmt)
 
     date_line = "date: " + datetime.datetime.fromtimestamp(
-        int(note['user_updated_time']) /
-        1000).strftime('%Y-%m-%dT%H:%M:%S+08:00')
+        int(note['user_updated_time']) / 1000).strftime(date_time_fmt)
     #^ for jekyll's pagination to sort post
     # https://talk.jekyllrb.com/t/sort-posts-by-updated-and-published-date/6789/2
     # https://cynthiachuang.github.io/Show-the-Last-Modified-Time-in-Jekyll-NextT-Theme/
@@ -294,7 +315,7 @@ FIND_JTID_RE = re.compile(r'^jtid:\S+', flags=re.MULTILINE | re.IGNORECASE)
 
 def decide_dest(note, note_id):
   #. dest
-  time_str_ = timestamp_to_date(note['user_created_time'], '%Y-%m-%d') +"-"
+  time_str_ = timestamp_to_date(note['user_created_time'], '%Y-%m-%d') + "-"
   YY_MM = time_str_[0:4]
 
   if IF_USED_JTID:
