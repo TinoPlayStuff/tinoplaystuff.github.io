@@ -122,7 +122,20 @@ def make_tag_line(note_id, tok):
   return "tags: [" + ", ".join(x for x in tag_set) + "]"
 
 
-def cvt_resource_link(note, note_id, tok):
+def cvt_resource_link(doc, note_id, tok):
+  res = json.loads(
+      subprocess.Popen(GET_NOTE + note_id + "/resources?" + tok +
+                       "&fields=id,file_extension&limit=100",
+                       stdout=subprocess.PIPE).stdout.read())
+  #^ currently, only convert 100 resources
+  for i in res['items']:
+    rid = i['id']
+    ori_str = ':/' + rid
+    res_dest = ID_DEST[rid]
+    new_link_url = os.path.relpath(res_dest, ID_FDR[note_id])
+    doc = doc.replace(ori_str, Path(new_link_url).as_posix())
+
+  return doc
 
 
 def travel_tag_notes(tag_id, TOK, n=1):
@@ -169,18 +182,7 @@ def travel_tag_notes(tag_id, TOK, n=1):
     #  why distinguish resource and markdown link?
     #    for resource, we only copy it
     #    for markdown, we need to generate it
-    res = json.loads(
-        subprocess.Popen(GET_NOTE + note_id + "/resources?" + TOK +
-                         "&fields=id,file_extension&limit=100",
-                         stdout=subprocess.PIPE).stdout.read())
-    #^ currently, only convert 100 resources
-    for i in res['items']:
-      id = i['id']
-      ori_str = ':/' + id
-      res_dest = ID_DEST[id]
-      # new_link_url = os.path.relpath(res_dest, N_FDR)
-      new_link_url = os.path.relpath(res_dest, ID_FDR[note_id])
-      doc = doc.replace(ori_str, Path(new_link_url).as_posix())
+    doc = cvt_resource_link(doc, note_id, TOK)
 
     # convert markdown link
     #! note: this use simple pattern to find markdown links
