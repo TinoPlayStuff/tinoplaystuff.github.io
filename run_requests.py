@@ -175,7 +175,7 @@ def travel_tag_notes(tag_id, TOK, n=1):
     # https://talk.jekyllrb.com/t/sort-posts-by-updated-and-published-date/6789/2
     # https://cynthiachuang.github.io/Show-the-Last-Modified-Time-in-Jekyll-NextT-Theme/
 
-    # convert resource link
+    #. convert resource link
     #! this must be done before convert markdown link
     #  because the resouce list is reported by joplin api
     #  deal it first, then my own code don't have to distinguish them
@@ -184,7 +184,7 @@ def travel_tag_notes(tag_id, TOK, n=1):
     #    for markdown, we need to generate it
     doc = cvt_resource_link(doc, note_id, TOK)
 
-    # convert markdown link
+    #. convert markdown link
     #! note: this use simple pattern to find markdown links
     in_links = INLINE_LINK_RE.findall(doc)
     for link in in_links:
@@ -192,11 +192,12 @@ def travel_tag_notes(tag_id, TOK, n=1):
       e = link.rfind("#")
       if e < s:
         link_id = link[s + 1:-1]
+        e = -1
       else:
         link_id = link[s + 1:e]
 
       # deal if the link is not published or invalid
-      if not link_id in ID_DEST.keys():
+      if link_id not in ID_DEST.keys():
         try:
           #. if the link is a no published note ...
           ex_note = json.loads(
@@ -208,7 +209,7 @@ def travel_tag_notes(tag_id, TOK, n=1):
           doc = doc.replace(link[s - 2:],
                             ' <- "not ready yet, maybe come here later" ')
           # maybe use source_url?
-        except:
+        except Exception as e:
           #. if the link is invalid (maybe sample in code block)
           link_false.append("fake link [" + link_id + "] shown in [" +
                             note['title'] + "]")
@@ -217,20 +218,20 @@ def travel_tag_notes(tag_id, TOK, n=1):
         continue
 
       link_dest = ID_DEST[link_id]
-      # new_link_url = os.path.relpath(link_dest, N_FDR)
       new_link_url = os.path.relpath(link_dest, ID_FDR[note_id])
       new_link_url = Path(new_link_url).as_posix()
-      new_link = link[0:s - 1] + new_link_url + ')'
+      new_link = link[0:s - 1] + new_link_url + link[e:]
+      #^! why note use .replace? this may be safer
 
       doc = doc.replace(link, new_link)
 
-    # hide contents not for read
-    if doc.find('\n-- end --') != -1:
-      doc = doc.replace("-- end --", '<span style="color:LightGray">-- end --')
-      doc = doc + '</span>\n'
-
-    # remove [toc] line
+    #. remove [toc] line
     doc = RM_TOC_RE.sub("\n", doc)
+
+    #. hide contents not for read
+    if doc.find('\n-- end --') != -1:
+      doc = doc.replace("\n-- end --", '<span style="color:LightGray">\n-- end --')
+      # doc = doc + '</span>\n'
 
     yaml_head = "---\n"
     yaml_head += tag_line + "\n"
