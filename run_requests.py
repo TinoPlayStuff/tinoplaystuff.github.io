@@ -12,8 +12,8 @@ to assigned tag. The exported files can be use by Jekyll.
 Usage:
 1. put this script in any folder 
 2. create a file and put your joplin authorization token 
-   (Tools -> Options -> Web Clipper -> Advanced options) in it.
-3. modify the the <-- setting --> block
+   (Tools -> Options -> Web Clipper -> Advanced options) into it.
+3. modify the the <-- setting --> block in this script
 4. run this script
 5. find export result in ./_posts and ./_resources folders
 """
