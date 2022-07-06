@@ -63,11 +63,11 @@ req_sess = requests.Session()
 
 
 # find the id of the specified id
-def get_tag_id(_tag, TOK):
+def get_tag_id(_tag, tok):
   try:
     tags = req_sess.get(URL + "search?type=tag&query=" + _tag + "&" +
-                        TOK).json()['items']
-  except:
+                        tok).json()['items']
+  except Exception:
     return 'error'
 
   if len(tags) == 0:
@@ -138,11 +138,11 @@ def cvt_resource_link(doc, note_id, tok):
   return doc
 
 
-def travel_tag_notes(tag_id, TOK, n=1):
+def travel_tag_notes(tag_id, tok, n=1):
   #. get all notes with PUBTAG
   notes = json.loads(
       subprocess.Popen(
-          GET_TAG + tag_id + "/notes?" + TOK +
+          GET_TAG + tag_id + "/notes?" + tok +
           "&fields=id,parent_id,title,user_created_time,user_updated_time,body"
           + "&limit=100&page=" + str(n),
           stdout=subprocess.PIPE).stdout.read())
@@ -151,7 +151,7 @@ def travel_tag_notes(tag_id, TOK, n=1):
   for note in notes['items']:
     note_id = note['id']
 
-    tag_line = make_tag_line(note_id, TOK)
+    tag_line = make_tag_line(note_id, tok)
 
     note_dest = ID_DEST[note_id]
     doc = note['body']
@@ -182,7 +182,7 @@ def travel_tag_notes(tag_id, TOK, n=1):
     #  why distinguish resource and markdown link?
     #    for resource, we only copy it
     #    for markdown, we need to generate it
-    doc = cvt_resource_link(doc, note_id, TOK)
+    doc = cvt_resource_link(doc, note_id, tok)
 
     #. convert markdown link
     #! note: this use simple pattern to find markdown links
@@ -201,7 +201,7 @@ def travel_tag_notes(tag_id, TOK, n=1):
         try:
           #. if the link is a no published note ...
           ex_note = json.loads(
-              subprocess.Popen(GET_NOTE + link_id + "?" + TOK +
+              subprocess.Popen(GET_NOTE + link_id + "?" + tok +
                                "&fields=title,source_url",
                                stdout=subprocess.PIPE).stdout.read())["title"]
           ex_note = "[" + ex_note + "] linked in [" + note['title'] + "]"
@@ -230,7 +230,8 @@ def travel_tag_notes(tag_id, TOK, n=1):
 
     #. hide contents not for read
     if doc.find('\n-- end --') != -1:
-      doc = doc.replace("\n-- end --", '<span style="color:LightGray">\n-- end --')
+      doc = doc.replace("\n-- end --",
+                        '<span style="color:LightGray">\n-- end --')
       # doc = doc + '</span>\n'
 
     yaml_head = "---\n"
@@ -251,18 +252,18 @@ def travel_tag_notes(tag_id, TOK, n=1):
     f.close()
 
   if notes['has_more']:
-    return travel_tag_notes(tag_id, TOK, n + 1)
+    return travel_tag_notes(tag_id, tok, n + 1)
   else:
     return True
 
 
-def add_resource(note_id, TOK, n=1):
+def add_resource(note_id, tok, n=1):
   #. get resource list
   # res = json.loads(
   #     subprocess.Popen(GET_NOTE + note_id + "/resources?" + TOK +
   #                      "&fields=id,file_extension&limit=100&page=" + str(n),
   #                      stdout=subprocess.PIPE).stdout.read())
-  res = req_sess.get(URL + "notes/" + note_id + "/resources?" + TOK +
+  res = req_sess.get(URL + "notes/" + note_id + "/resources?" + tok +
                      "&fields=id,file_extension&limit=100&page=" +
                      str(n)).json()
 
@@ -307,7 +308,7 @@ def add_resource(note_id, TOK, n=1):
         shutil.copy2(JOPRFDR + new_fname, res_dest)
 
   if res['has_more']:
-    return add_resource(id, TOK, n + 1)
+    return add_resource(id, tok, n + 1)
   else:
     return True
 
@@ -399,7 +400,7 @@ def main():
   try:
     with open(TOK_FILE) as f:
       TOK = "token=" + f.read().strip()
-  except:
+  except Exception:
     print('\nFAILED: check your "TOK_FILE" setting\n')
     return
 
