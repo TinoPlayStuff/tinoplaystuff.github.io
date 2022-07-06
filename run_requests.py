@@ -6,7 +6,7 @@ this script will **delete** four folders:
   delete all contents in the following four folders:
   "./_posts", "./_resources", "./_postsbak", and "./_resourcesbak"
 
-This script will export your joplin notes with relative resource files according
+This script will export your joplin notes and relative resource files according
 to assigned tag. The exported files can be use by Jekyll.
 
 Usage:
