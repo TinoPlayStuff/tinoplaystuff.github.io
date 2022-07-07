@@ -25,13 +25,20 @@ from pathlib import Path
 # <- setting
 TOK_FILE = "run.py.tok"  # file contains joplin token
 PUBTAG = "publishedev"  # note with this tag will be extracted
-TAGHIDE = {"published", "publishedx", "publishedev"}  # test tag
+TAGHIDE = {"published", "publishedx",
+           "publishedev"}  # test tags, will not be shown in exported posts
 N_FDR = "./_posts"  # where to put the exported posts
 R_FDR = "./_resources"  # where to put resource files (.jpg, .png, ...)
 URL = "http://localhost:41184/"  # joplin web clipper service
+
+# joplin resource folder, I know this is a bad practice, but its much
+# faster than using joplin clipper protocal
 JOPRFDR = "C:/_Greenware/joplin/joplinprofile/resources/"
 
-IF_USED_JTID = True
+# if True, the script search jtid:xxxx-xx-xx-asdfasdfaf in a note and use it as 
+# the post title
+IF_USED_JTID = True 
+
 TAG_EXT = {'english_learning': {'英語學習'}}
 # -> setting
 
