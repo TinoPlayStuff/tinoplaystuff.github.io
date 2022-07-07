@@ -209,7 +209,7 @@ def travel_tag_notes(tag_id, TOK, n=1):
           doc = doc.replace(link[s - 2:],
                             ' <- "not ready yet, maybe come here later" ')
           # maybe use source_url?
-        except Exception as e:
+        except Exception:
           #. if the link is invalid (maybe sample in code block)
           link_false.append("fake link [" + link_id + "] shown in [" +
                             note['title'] + "]")
@@ -230,7 +230,8 @@ def travel_tag_notes(tag_id, TOK, n=1):
 
     #. hide contents not for read
     if doc.find('\n-- end --') != -1:
-      doc = doc.replace("\n-- end --", '<span style="color:LightGray">\n-- end --')
+      doc = doc.replace("\n-- end --",
+                        '<span style="color:LightGray">\n-- end --')
       # doc = doc + '</span>\n'
 
     yaml_head = "---\n"
